@@ -1,31 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlowcase.c                                    :+:      :+:    :+:   */
+/*   ft_tolower.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alluengo <alluengo@student.42madrid.c      +#+  +:+       +#+        */
+/*   By: alluengo <alluengo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/20 20:40:46 by alluengo          #+#    #+#             */
-/*   Updated: 2025/08/20 20:43:49 by alluengo         ###   ########.fr       */
+/*   Created: 2025/10/01 18:41:45 by alluengo          #+#    #+#             */
+/*   Updated: 2025/10/07 11:37:22 by alluengo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strlowcase(char *str)
-{
-	int	i;
+#include "libft.h"
 
-	i = 0;
-	while (str[i])
-	{
-		if (str[i] < 91 && str[i] > 64)
-		{
-			str[i] = str[i] + 32;
-			i++;
-		}
-		else
-		{
-			i++;
-		}
-	}
-	return (str);
+int	ft_tolower(int c)
+{
+	if (c >= 'A' && c <= 'Z')
+		c += 32;
+	return (c);
 }

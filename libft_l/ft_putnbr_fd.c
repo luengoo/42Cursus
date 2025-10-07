@@ -1,43 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncat.c                                       :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alluengo <alluengo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/21 20:19:52 by alluengo          #+#    #+#             */
-/*   Updated: 2025/10/07 11:36:34 by alluengo         ###   ########.fr       */
+/*   Created: 2025/10/06 12:31:01 by alluengo          #+#    #+#             */
+/*   Updated: 2025/10/07 11:34:45 by alluengo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strncat(char *dest, char *src, unsigned long nb)
+void	ft_putnbr(int nb, int fd)
 {
-	unsigned long	i;
-	unsigned long	j;
-
-	i = 0;
-	j = 0;
-	while (dest[i])
+	if (nb == -2147483648)
 	{
-		i++;
+		write(fd, "-", 1);
+		write(fd, "2", 1);
+		ft_putnbr(147483648, fd);
 	}
-	while (src[j] && nb > j)
+	else if (nb < 0)
 	{
-		dest[i] = src[j];
-		i++;
-		j++;
+		write(fd, "-", 1);
+		nb = -nb;
+		ft_putnbr(nb, fd);
 	}
-	dest[i] = '\0';
-	return (dest);
+	else if (nb > 9)
+	{
+		ft_putnbr(nb / 10, fd);
+		ft_putnbr(nb % 10, fd);
+	}
+	else
+	{
+		nb += 48;
+		write(fd, &nb, 1);
+	}
 }
-/*
-int	main()
-{
-	char	src[] = " malo";
-	char	dest[] = "Pa tu casa perro";
 
-	printf("%s", ft_strncat(dest, src, 421));
-	return (0);
-}*/
+void	ft_putnbr_fd(int n, int fd)
+{
+	ft_putnbr(n, fd);
+}

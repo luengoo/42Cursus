@@ -1,43 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncat.c                                       :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alluengo <alluengo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/21 20:19:52 by alluengo          #+#    #+#             */
-/*   Updated: 2025/10/07 11:36:34 by alluengo         ###   ########.fr       */
+/*   Created: 2025/10/07 12:42:50 by alluengo          #+#    #+#             */
+/*   Updated: 2025/10/07 17:29:31 by alluengo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strncat(char *dest, char *src, unsigned long nb)
+int	ft_lstsize(t_list *lst)
 {
-	unsigned long	i;
-	unsigned long	j;
+	int	i;
 
 	i = 0;
-	j = 0;
-	while (dest[i])
+	while (lst)
 	{
 		i++;
+		lst = lst->next;
 	}
-	while (src[j] && nb > j)
-	{
-		dest[i] = src[j];
-		i++;
-		j++;
-	}
-	dest[i] = '\0';
-	return (dest);
+	return (i);
 }
-/*
-int	main()
-{
-	char	src[] = " malo";
-	char	dest[] = "Pa tu casa perro";
 
-	printf("%s", ft_strncat(dest, src, 421));
-	return (0);
+/*int	 main()
+{
+	 t_list *l;
+        int actual;
+        int expected;
+ 
+        l = ft_lstnew(ft_strdup("1"));
+        l->next = ft_lstnew(ft_strdup("2"));
+        l->next->next = ft_lstnew(ft_strdup("3"));
+        expected = 3;
+        actual = ft_lstsize(l);
+        if (actual == expected)
+                exit(printf("success"));
+        exit(printf("error"));
 }*/

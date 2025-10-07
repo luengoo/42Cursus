@@ -1,26 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alluengo <alluengo@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 13:48:01 by alluengo          #+#    #+#             */
-/*   Updated: 2025/08/24 16:53:46 by alluengo         ###   ########.fr       */
+/*   Updated: 2025/09/29 17:34:18 by alluengo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <stdio.h>
 
-char	*ft_strchr(char *str, int c)
+#include "libft.h"
+
+char	*ft_strnstr(const char *str, const char *to_find, size_t n)
 {
-	int	i;
+	unsigned int	i;
+	unsigned int	j;
+	char			*str2;
+	char			*to_find2;
 
 	i = 0;
-	while (str[i])
+	str2 = (char *)str;
+	to_find2 = (char *)to_find;
+	if (to_find2[0] == '\0')
+		return (str2);
+	while (str2[i] && i < n)
 	{
-	if(str[i] == c)
-		return (str + i);
-	else
+		j = 0;
+		while (str2[i + j] == to_find2[j] && str2[i + j] && (i + j) < n)
+			j++;
+		if (to_find2[j] == '\0')
+			return (str2 + i);
 		i++;
 	}
 	return (0);
@@ -28,8 +38,8 @@ char	*ft_strchr(char *str, int c)
 
 /*int	main()
 {
-	char	str[] = "Viscai basa  barsa";
-	int		c = 'b';
-	printf("%s", ft_strchr(str, c));
+	char	str[] = "lorem ipsum dolor sit amet";
+	char	to_find[] = "dolor";
+	printf("%s", ft_strnstr(str, to_find, 15));
 	return (0);
 }*/

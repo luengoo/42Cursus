@@ -1,43 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncat.c                                       :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alluengo <alluengo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/21 20:19:52 by alluengo          #+#    #+#             */
-/*   Updated: 2025/10/07 11:36:34 by alluengo         ###   ########.fr       */
+/*   Created: 2025/10/01 18:48:33 by alluengo          #+#    #+#             */
+/*   Updated: 2025/10/07 11:36:12 by alluengo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strncat(char *dest, char *src, unsigned long nb)
+size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 {
-	unsigned long	i;
-	unsigned long	j;
+	unsigned int	i;
+	unsigned int	j;
 
 	i = 0;
 	j = 0;
-	while (dest[i])
-	{
-		i++;
-	}
-	while (src[j] && nb > j)
-	{
-		dest[i] = src[j];
-		i++;
+	while (src[j])
 		j++;
+	if (size == 0)
+		return (j);
+	while (src[i] && i < size - 1)
+	{
+		dst[i] = src[i];
+		i++;
 	}
-	dest[i] = '\0';
-	return (dest);
+	dst[i] = '\0';
+	return (j);
 }
-/*
-int	main()
-{
-	char	src[] = " malo";
-	char	dest[] = "Pa tu casa perro";
 
-	printf("%s", ft_strncat(dest, src, 421));
-	return (0);
+/*int	main()
+{
+	char	dest[50];
+	char	*src = "Buenas tardes";
+	printf("%lu", ft_strlcpy(dest, src, 15));
 }*/

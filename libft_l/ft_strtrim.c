@@ -1,43 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncat.c                                       :+:      :+:    :+:   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alluengo <alluengo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/21 20:19:52 by alluengo          #+#    #+#             */
-/*   Updated: 2025/10/07 11:36:34 by alluengo         ###   ########.fr       */
+/*   Created: 2025/10/03 18:23:47 by alluengo          #+#    #+#             */
+/*   Updated: 2025/10/07 11:37:12 by alluengo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strncat(char *dest, char *src, unsigned long nb)
+char	*ft_strtrim(const char *s1, const char *set)
 {
-	unsigned long	i;
-	unsigned long	j;
+	unsigned int	start;
+	unsigned int	end;
+	char			*dup;
 
-	i = 0;
-	j = 0;
-	while (dest[i])
-	{
-		i++;
-	}
-	while (src[j] && nb > j)
-	{
-		dest[i] = src[j];
-		i++;
-		j++;
-	}
-	dest[i] = '\0';
-	return (dest);
+	start = 0;
+	end = ft_strlen(s1);
+	while (s1[start] && ft_strchr((char *)set, s1[start]))
+		start++;
+	while (s1[start] && (end > start) && ft_strchr((char *)set, s1[end - 1]))
+		end--;
+	dup = ft_substr(s1, start, (end - start));
+	return (dup);
 }
-/*
-int	main()
-{
-	char	src[] = " malo";
-	char	dest[] = "Pa tu casa perro";
-
-	printf("%s", ft_strncat(dest, src, 421));
-	return (0);
-}*/

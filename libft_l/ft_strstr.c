@@ -3,13 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alluengo <alluengo@student.42madrid.c      +#+  +:+       +#+        */
+/*   By: alluengo <alluengo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 13:48:01 by alluengo          #+#    #+#             */
-/*   Updated: 2025/08/24 16:53:46 by alluengo         ###   ########.fr       */
+/*   Updated: 2025/10/07 11:37:07 by alluengo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <stdio.h>
+
+#include "libft.h"
 
 char	*ft_strstr(char *str, char *to_find)
 {

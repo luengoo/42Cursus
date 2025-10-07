@@ -1,36 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                        :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alluengo <alluengo@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 13:48:01 by alluengo          #+#    #+#             */
-/*   Updated: 2025/08/24 16:53:46 by alluengo         ###   ########.fr       */
+/*   Updated: 2025/09/29 17:34:30 by alluengo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <stdio.h>
 
-char	*ft_strrchr(char *str, int c)
+#include "libft.h"
+
+char	*ft_strrchr(const char *str, int c)
 {
 	int	len;
 
-	len = 0;
-	while (str[len])
-		len++;
-	while (len - 1 > 0)
+	len = ft_strlen(str);
+	if (c == 0)
+		return ((char *)str + len);
+	while (len >= 0)
 	{
-		if (str[len - 1] == c)
-			return (str + len - 1);
-		else
-			len--;
+		if (str[len] == (char)c)
+			return ((char *)str + len);
+		len--;
 	}
 	return (0);
 }
 
 /*int	main()
 {
-	char	str[] = "Viscai basa  barsa";
+	char	str[] = "bonjour";
 	int		c = 'b';
 	printf("%s", ft_strrchr(str, c));
 	return (0);

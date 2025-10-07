@@ -1,43 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncat.c                                       :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alluengo <alluengo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/21 20:19:52 by alluengo          #+#    #+#             */
-/*   Updated: 2025/10/07 11:36:34 by alluengo         ###   ########.fr       */
+/*   Created: 2025/10/02 16:19:49 by alluengo          #+#    #+#             */
+/*   Updated: 2025/10/07 11:32:44 by alluengo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strncat(char *dest, char *src, unsigned long nb)
+void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	unsigned long	i;
-	unsigned long	j;
+	unsigned char	*d;
+	unsigned char	*s;
 
-	i = 0;
-	j = 0;
-	while (dest[i])
+	d = (unsigned char *)dest;
+	s = (unsigned char *)src;
+	if (dest == 0 && src == 0)
+		return (0);
+	if (d >= s)
 	{
-		i++;
+		while (n--)
+			d[n] = s[n];
 	}
-	while (src[j] && nb > j)
-	{
-		dest[i] = src[j];
-		i++;
-		j++;
-	}
-	dest[i] = '\0';
+	else
+		ft_memcpy(d, s, n);
 	return (dest);
 }
-/*
-int	main()
-{
-	char	src[] = " malo";
-	char	dest[] = "Pa tu casa perro";
-
-	printf("%s", ft_strncat(dest, src, 421));
-	return (0);
-}*/

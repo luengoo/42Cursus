@@ -1,31 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalnum.c                                  :+:      :+:    :+:   */
+/*   ft_isalnum.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alluengo <alluengo@student.42madrid.c      +#+  +:+       +#+        */
+/*   By: alluengo <alluengo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/20 17:37:08 by alluengo          #+#    #+#             */
-/*   Updated: 2025/08/20 18:19:35 by alluengo         ###   ########.fr       */
+/*   Created: 2025/10/07 11:30:21 by alluengo          #+#    #+#             */
+/*   Updated: 2025/10/07 11:30:21 by alluengo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isalnum(char *str)
-{
-	int	i;
+#include "libft.h"
 
-	i = 0;
-	while (str[i])
-	{
-		if ((str[i] > 96 && str[i] < 123) || (str[i] > 64 && str[i] < 91)
-			|| (str[i] > '0' && str[i] < '9'))
-		{
-			i++;
-		}
-		else
-		{
-			return (0);
-		}
-	}
-	return (1);
+int	ft_isalnum(int c)
+{
+	if ((c > 96 && c < 123) || (c > 64 && c < 91) || (c >= '0' && c <= '9'))
+		return (1);
+	return (0);
 }

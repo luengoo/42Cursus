@@ -1,46 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strupcase.c                                     :+:      :+:    :+:   */
+/*   ft_toupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alluengo <alluengo@student.42madrid.c      +#+  +:+       +#+        */
+/*   By: alluengo <alluengo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/20 20:21:21 by alluengo          #+#    #+#             */
-/*   Updated: 2025/08/20 20:38:28 by alluengo         ###   ########.fr       */
+/*   Created: 2025/10/01 18:42:33 by alluengo          #+#    #+#             */
+/*   Updated: 2025/10/07 11:37:26 by alluengo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <stdio.h>
 
-char	*ft_strupcase(char *str)
+#include "libft.h"
+
+int	ft_toupper(int c)
 {
-	int	i;
-
-	i = 0;
-	while (str[i])
-	{
-		if (str[i] < 123 && str[i] > 96)
-		{
-			str[i] = str[i] - 32;
-			i++;
-		}
-		else
-		{
-			i++;
-		}
-	}
-	return (str);
+	if (c >= 'a' && c <= 'z')
+		c -= 32;
+	return (c);
 }
-
-/*int	main()
-{
-	char str1[] = "hola mundo!";
-	char str2[] = "12345abcXYZ";
-	char str3[] = "";
-	char str4[] = "ya está en MayÚsculAS";
-
-	printf("Original: %s -> Mayusculas: %s\n", str1, ft_strupcase(str1));
-	printf("Original: %s -> Mayusculas: %s\n", str2, ft_strupcase(str2));
-	printf("Original: %s -> Mayusculas: %s\n", str3, ft_strupcase(str3));
-	printf("Original: %s -> Mayusculas: %s\n", str4, ft_strupcase(str4));
-	return (0);
-}*/

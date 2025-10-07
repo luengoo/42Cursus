@@ -1,43 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncat.c                                       :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alluengo <alluengo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/21 20:19:52 by alluengo          #+#    #+#             */
-/*   Updated: 2025/10/07 11:36:34 by alluengo         ###   ########.fr       */
+/*   Created: 2025/10/03 17:41:22 by alluengo          #+#    #+#             */
+/*   Updated: 2025/10/07 11:35:48 by alluengo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strncat(char *dest, char *src, unsigned long nb)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	unsigned long	i;
-	unsigned long	j;
+	int		i;
+	int		j;
+	char	*conc;
 
 	i = 0;
 	j = 0;
-	while (dest[i])
+	conc = (char *)malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
+	if (!conc)
+		return (0);
+	while (s1[i] != '\0')
 	{
+		conc[i] = s1[i];
 		i++;
 	}
-	while (src[j] && nb > j)
+	while (s2[j] != '\0')
 	{
-		dest[i] = src[j];
-		i++;
+		conc[i + j] = s2[j];
 		j++;
 	}
-	dest[i] = '\0';
-	return (dest);
+	conc[i + j] = '\0';
+	return (conc);
 }
-/*
-int	main()
-{
-	char	src[] = " malo";
-	char	dest[] = "Pa tu casa perro";
-
-	printf("%s", ft_strncat(dest, src, 421));
-	return (0);
-}*/

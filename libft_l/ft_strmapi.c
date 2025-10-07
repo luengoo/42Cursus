@@ -1,37 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcpy.c                                        :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alluengo <alluengo@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: alluengo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/20 15:05:40 by alluengo          #+#    #+#             */
-/*   Updated: 2025/10/07 11:35:35 by alluengo         ###   ########.fr       */
+/*   Created: 2025/10/06 10:56:19 by alluengo          #+#    #+#             */
+/*   Updated: 2025/10/06 10:56:22 by alluengo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strcpy(char *dest, char *src)
+char	*ft_strmapi(const char *s, char (*f)(unsigned int, char))
 {
-	int	i;
+	unsigned int	i;
+	char			*str;
 
 	i = 0;
-	while (src[i])
+	str = (char *)malloc((ft_strlen(s) + 1) * sizeof(char));
+	if (!str)
+		return (0);
+	while (s[i])
 	{
-		dest[i] = src[i];
+		str[i] = f(i, s[i]);
 		i++;
 	}
-	dest[i] = '\0';
-	return (dest);
+	str[i] = '\0';
+	return (str);
 }
-
-/*int	main()
-{
-	char	dest[42];
-	char	src[14] = "Keep swimming";
-
-	ft_strcpy(dest, src);
-	write(1, &dest, 14);
-	return (0);
-}*/

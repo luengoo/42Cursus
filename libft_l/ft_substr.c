@@ -1,43 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncat.c                                       :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alluengo <alluengo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/21 20:19:52 by alluengo          #+#    #+#             */
-/*   Updated: 2025/10/07 11:36:34 by alluengo         ###   ########.fr       */
+/*   Created: 2025/10/02 19:13:46 by alluengo          #+#    #+#             */
+/*   Updated: 2025/10/07 11:37:15 by alluengo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strncat(char *dest, char *src, unsigned long nb)
+char	*ft_substr(const char *s, unsigned int start, size_t len)
 {
-	unsigned long	i;
-	unsigned long	j;
+	char	*new;
+	size_t	i;
+	size_t	ls;
+	size_t	sub_len;
 
+	ls = ft_strlen(s);
+	if (start >= ls)
+		sub_len = 0;
+	else if (len > (ls - start))
+		sub_len = ls - start;
+	else
+		sub_len = len;
+	new = (char *)malloc((sub_len + 1) * sizeof(char));
+	if (!new)
+		return (NULL);
 	i = 0;
-	j = 0;
-	while (dest[i])
+	while (i < sub_len)
 	{
+		new[i] = s[start];
+		start++;
 		i++;
 	}
-	while (src[j] && nb > j)
-	{
-		dest[i] = src[j];
-		i++;
-		j++;
-	}
-	dest[i] = '\0';
-	return (dest);
+	new[i] = '\0';
+	return (new);
 }
-/*
-int	main()
-{
-	char	src[] = " malo";
-	char	dest[] = "Pa tu casa perro";
-
-	printf("%s", ft_strncat(dest, src, 421));
-	return (0);
-}*/

@@ -1,43 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncat.c                                       :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alluengo <alluengo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/21 20:19:52 by alluengo          #+#    #+#             */
-/*   Updated: 2025/10/07 11:36:34 by alluengo         ###   ########.fr       */
+/*   Created: 2025/10/02 18:20:53 by alluengo          #+#    #+#             */
+/*   Updated: 2025/10/07 11:33:22 by alluengo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strncat(char *dest, char *src, unsigned long nb)
+void	*ft_calloc(size_t nmemb, size_t size)
 {
-	unsigned long	i;
-	unsigned long	j;
+	char	*tmp;
+	int		i;
 
+	tmp = (char *)malloc(nmemb * size);
 	i = 0;
-	j = 0;
-	while (dest[i])
+	if (nmemb == 0 || size == 0)
+		return (tmp);
+	if (!tmp)
+		return (0);
+	while (tmp[i])
 	{
+		tmp[i] = '\0';
 		i++;
 	}
-	while (src[j] && nb > j)
-	{
-		dest[i] = src[j];
-		i++;
-		j++;
-	}
-	dest[i] = '\0';
-	return (dest);
+	return (tmp);
 }
-/*
-int	main()
-{
-	char	src[] = " malo";
-	char	dest[] = "Pa tu casa perro";
-
-	printf("%s", ft_strncat(dest, src, 421));
-	return (0);
-}*/

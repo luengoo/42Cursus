@@ -3,15 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alluengo <alluengo@student.42madrid.c      +#+  +:+       +#+        */
+/*   By: alluengo <alluengo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/24 18:31:11 by alluengo          #+#    #+#             */
-/*   Updated: 2025/08/24 20:14:59 by alluengo         ###   ########.fr       */
+/*   Updated: 2025/10/07 11:33:08 by alluengo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <stdio.h>
 
-int	ft_atoi(char *str)
+#include "libft.h"
+
+/* static int	ft_check_overflow(int res)
+{
+	if (res > 2147483647)
+		return (-1);
+	if (res == -2147483648)
+		return (res);
+	if (res < -2147483647)
+		return (0);
+	return (res);
+} */
+
+int	ft_atoi(const char *nptr)
 {
 	int	i;
 	int	neg;
@@ -20,28 +32,28 @@ int	ft_atoi(char *str)
 	i = 0;
 	neg = 1;
 	nbr = 0;
-	while ((str[i] >= 9 && str[i] <= 13) || str[i] == ' ')
+	while ((nptr[i] >= 9 && nptr[i] <= 13) || nptr[i] == ' ')
 		i++;
-	while (str[i] == '-' || str[i] == '+')
+	if (nptr[i] == '-' || nptr[i] == '+')
 	{
-		if (str[i] == '-')
-		{
+		if (nptr[i] == '-')
 			neg *= -1;
-		}
 		i++;
 	}
-	while (str[i] && (str[i] >= '0' && str[i] <= '9'))
+	while (nptr[i] && (nptr[i] >= '0' && nptr[i] <= '9'))
 	{
-		nbr = (nbr * 10) + (str[i] - '0');
+		nbr = (nbr * 10) + (nptr[i] - '0');
 		i++;
 	}
-	return (nbr * neg);
+	return (neg * nbr);
 }
 
-/*int	main()
+/* int	main()
 {
-	char	*str;
-	str = "   --+---+415112fsafa13";
-	printf("%d", ft_atoi(str));
+	char	*nptr;
+	nptr = "-2147483648";
+	printf("%d\n", ft_atoi(nptr));
+	printf("%d", atoi(nptr));
 	return (0);
-}*/
+}
+ */
