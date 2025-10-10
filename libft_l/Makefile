@@ -6,7 +6,7 @@
 #    By: alluengo <alluengo@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/29 19:20:37 by alluengo          #+#    #+#              #
-#    Updated: 2025/10/07 18:31:30 by alluengo         ###   ########.fr        #
+#    Updated: 2025/10/09 17:45:09 by alluengo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,13 +55,15 @@ SRC = ft_atoi.c \
 	  ft_itoa.c \
 	  ft_split.c \
 
-BONUS = ft_lstnew.c \
-		ft_lstadd_front.c \
-		ft_lstsize.c \
-		ft_lstlast.c \
-		ft_lstadd_back.c \
-		ft_lstdelone.c \
-		ft_lstclear.c \
+BONUS = ft_lstnew_bonus.c \
+		ft_lstadd_front_bonus.c \
+		ft_lstsize_bonus.c \
+		ft_lstlast_bonus.c \
+		ft_lstadd_back_bonus.c \
+		ft_lstdelone_bonus.c \
+		ft_lstclear_bonus.c \
+		ft_lstiter_bonus.c \
+		ft_lstmap_bonus.c \
 
 
 OBJ = $(SRC:.c=.o)

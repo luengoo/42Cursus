@@ -6,13 +6,13 @@
 /*   By: alluengo <alluengo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/21 17:43:35 by alluengo          #+#    #+#             */
-/*   Updated: 2025/10/07 11:36:38 by alluengo         ###   ########.fr       */
+/*   Updated: 2025/10/09 17:04:00 by alluengo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strncmp(char *s1, char *s2, size_t n)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
 	unsigned long	i;
 

@@ -6,7 +6,7 @@
 /*   By: alluengo <alluengo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 17:37:41 by alluengo          #+#    #+#             */
-/*   Updated: 2025/10/07 18:27:52 by alluengo         ###   ########.fr       */
+/*   Updated: 2025/10/09 17:56:23 by alluengo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <stdlib.h>
 # include <string.h>
 # include <unistd.h>
+# include <stdint.h>
 
 typedef struct s_list
 {
@@ -32,7 +33,7 @@ int				ft_isdigit(int c);
 int				ft_isprint(int c);
 int				ft_strcmp(char *s1, char *s2);
 int				ft_strlen(const char *str);
-int				ft_strncmp(char *s1, char *s2, size_t n);
+int				ft_strncmp(const char *s1, const char *s2, size_t n);
 int				ft_tolower(int c);
 int				ft_toupper(int c);
 int				ft_memcmp(const void *s1, const void *s2, size_t n);
@@ -70,6 +71,7 @@ void			ft_lstadd_front(t_list **lst, t_list *new);
 void			ft_lstadd_back(t_list **lst, t_list *new);
 void			ft_lstdelone(t_list *lst, void (*del)(void *));
 void			ft_lstclear(t_list **lst, void (*del)(void *));
+void			ft_lstiter(t_list *lst, void (*f)(void *));
 
 //SIZE_T
 size_t			ft_strlcpy(char *dst, const char *src, size_t size);
@@ -78,5 +80,7 @@ size_t			ft_strlcat(char *dest, const char *src, size_t size);
 //T_LIST
 t_list			*ft_lstnew(void *content);
 t_list			*ft_lstlast(t_list *lst);
+t_list			*ft_lstmap(t_list *lst, void *(*f)(void *),
+					void (*del)(void *));
 
 #endif
