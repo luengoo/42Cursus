@@ -6,7 +6,7 @@
 /*   By: alluengo <alluengo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/10 19:31:43 by alluengo          #+#    #+#             */
-/*   Updated: 2025/10/15 17:10:57 by alluengo         ###   ########.fr       */
+/*   Updated: 2025/10/21 18:32:58 by alluengo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,7 @@ char	*get_next_line(int fd)
 	static t_list	*list = NULL;
 	char			*next_line;
 
-	if (fd < 0 || BUFFER_SIZE <= 0 || (read(fd, &next_line, 0) < 0))
+	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (0);
 	ft_lstnew(&list, fd);
 	if (!list)

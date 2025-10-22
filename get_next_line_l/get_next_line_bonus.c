@@ -6,11 +6,11 @@
 /*   By: alluengo <alluengo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/10 19:31:43 by alluengo          #+#    #+#             */
-/*   Updated: 2025/10/15 17:01:09 by alluengo         ###   ########.fr       */
+/*   Updated: 2025/10/22 13:03:59 by alluengo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 static void	prepareandfree(t_list **list)
 {
@@ -111,7 +111,7 @@ char	*get_next_line(int fd)
 	static t_list	*list[1024];
 	char			*next_line;
 
-	if (fd < 0 || BUFFER_SIZE <= 0 || (read(fd, &next_line, 0) < 0))
+	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (0);
 	ft_lstnew(&list[fd], fd);
 	if (!list[fd])

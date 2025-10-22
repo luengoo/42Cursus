@@ -6,7 +6,7 @@
 /*   By: alluengo <alluengo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/11 18:46:34 by alluengo          #+#    #+#             */
-/*   Updated: 2025/10/15 15:53:00 by alluengo         ###   ########.fr       */
+/*   Updated: 2025/10/21 18:32:53 by alluengo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	ft_lstnew(t_list **list, int fd)
 		if (NULL == buffer)
 			return ;
 		char_read = read(fd, buffer, BUFFER_SIZE);
-		if (!char_read)
+		if (!char_read || char_read < 0)
 		{
 			free(buffer);
 			return ;
