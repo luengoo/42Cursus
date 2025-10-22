@@ -6,7 +6,7 @@
 /*   By: alluengo <alluengo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/22 18:16:35 by alluengo          #+#    #+#             */
-/*   Updated: 2025/10/22 18:39:26 by alluengo         ###   ########.fr       */
+/*   Updated: 2025/10/22 18:56:32 by alluengo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int	ft_hex_pointer(unsigned long p)
 	int	result;
 	int	hex;
 
+	if (!p)
+		return (ft_putstr("(nil)"));
 	result = ft_putstr("0x");
 	if (result == -1)
 		return (-1);
@@ -26,23 +28,23 @@ int	ft_hex_pointer(unsigned long p)
 	return (result + hex);
 }
 
-int	ft_check(char format, va_list args)
+int	ft_check(char format, va_list list)
 {
 	if (format == 'c')
-		return (ft_putchar(va_arg(args, int)));
+		return (ft_putchar(va_arg(list, int)));
 	else if (format == 's')
-		return (ft_putstr(va_arg(args, char *)));
+		return (ft_putstr(va_arg(list, char *)));
 	else if (format == 'p')
-		return (ft_hex_pointer(va_arg(args, unsigned long)));
+		return (ft_hex_pointer(va_arg(list, unsigned long)));
 	else if (format == 'd' || format == 'i')
-		return (ft_putnbr(va_arg(args, int)));
+		return (ft_putnbr(va_arg(list, int)));
 	else if (format == 'u')
-		return (ft_putunbr(va_arg(args, unsigned int)));
+		return (ft_putunbr(va_arg(list, unsigned int)));
 	else if (format == 'x')
-		return (ft_putnbr_base(va_arg(args, unsigned int),
+		return (ft_putnbr_base(va_arg(list, unsigned int),
 				"0123456789abcdef", 0));
 	else if (format == 'X')
-		return (ft_putnbr_base(va_arg(args, unsigned int),
+		return (ft_putnbr_base(va_arg(list, unsigned int),
 				"0123456789ABCDEF", 0));
 	else if (format == '%')
 		return (ft_putchar('%'));
@@ -77,7 +79,7 @@ int	ft_printf(char const *str, ...)
 	int		i;
 	int		count;
 	int		res;
-	
+
 	i = 0;
 	count = 0;
 	res = 0;
@@ -99,7 +101,7 @@ int	ft_printf(char const *str, ...)
 	return (count);
 }
 
-#include <stdio.h>
+/* #include <stdio.h>
 
 int	main()
 {
@@ -108,8 +110,8 @@ int	main()
 
 	i = 0;
 	j = 0;
-	i = ft_printf("%c, %s, %p, %i, %d, %u, %x, %X, %%\n", 'a', "Hola", &i, -42, -42, -42, 42, 42);
-	j = printf("%c, %s, %p, %i, %d, %u, %x, %X, %%\n", 'a', "Hola", &i, -42, -42, -42, 42, 42);
+	ft_printf("%p\n", NULL);
+	printf("%p\n", NULL);
 	ft_printf("Numero devuelto de la mia: %d\n", i);
 	ft_printf("Numero devuelto de la real: %d\n", i);
-}
+} */
