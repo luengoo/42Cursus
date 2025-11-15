@@ -32,5 +32,7 @@ long	ft_atol(const char *nptr)
 		nbr = (nbr * 10) + (nptr[i] - '0');
 		i++;
 	}
+	if (nptr[i] == '-' || nptr[i] == '+')
+		return (NULL);
 	return (neg * nbr);
 }

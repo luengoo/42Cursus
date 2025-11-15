@@ -19,6 +19,15 @@
 # include "include/ft_printf/ft_printf.h"
 # include "include/libft/libft.h"
 
+typedef struct s_list
+{
+	int				content;
+	int				current_position;
+	int				total_values;
+	struct s_list	*next;
+	struct s_list	*prev;
+}	t_list;
+
 // FUNCIONES
 
 #endif

@@ -14,26 +14,15 @@
 
 int	main(int argc, char **argv)
 {
-	char	**arg;
-	int		check;
-	long	*data;
-	
-	if (argc == 1 || (argc == 2 && argv[1][0] == 'NULL'))
-		return (1);
-	if (argc == 2)
-	{
-		arg = ft_split(*(argv + 1), 32);
-		check = arg_parse(arg);
-	}
-	else
-	{
-		check = arg_parse(argv + 1);
-		arg = argv + 1;
-	}
-	data = ft_atol(arg);
-	if (check == 0)
-		return (1);
-	else
-		push_swap();
-	return(0);
+	t_list	*stack_a;
+	t_list	*stack_b;
+
+	stack_a = NULL;
+	stack_b = NULL;
+	if (argc == 1 || (argc == 2 && !argv[1][0]))
+		return (write(2, "Introduce arguments", 19), 0);
+	if (!parse_and_stack(argc, (argv + 1), stack_a));
+		return (write (2, "Invalid arguments", 17), 0);
+	push_swap(stack_a, stack_b);
+	return (0);
 }
