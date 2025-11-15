@@ -1,0 +1,59 @@
+if PASO == XX 
+    No hecho!!
+else
+    hecho!!
+
+Primero: XX
+    Parseo: 
+           if (argc > 1)
+            Crear linked list
+            list a == NULL;
+            list b == NULL;
+            - if (argv[1][0] == NULL)
+                return 0;
+               else
+                    if (ft_strchr(argv + 1, " "));
+                        argv + 1 == **ft_split((argv + 1), " ");
+                        argv[i] : if_number == 1;
+                                ft_atol;
+                                if (check_overflow == 1 && check_if_included == 0)
+                                    include in stack a;
+                                    importamos datos de valor, posicion en nodo de numero
+                                    aumentamos numero de valores totales en stack *a;
+                                    i++;
+                                else
+                                    return (free_splitted, 0);
+                            else
+                                return (free_splitted, 0);
+                        return (1);
+                    else
+                        if(if_number(argv[1]) == 1)
+                            ft_atol(argv[1]);
+                            if (check_overflow == 1)
+                                include in stack a
+                            else
+                                return (0);
+                        else
+                            return (0);
+                return (1);
+Segundo: XX
+    Crear funciones de instruccion:
+        SWAP
+        - sa = Intercambia los dos primeros elementos del stack a; if elementos < 2 = return 0;
+        - sb = Intercambia los dos primeros elementos del stack b; if elementos < 2 = return 0;
+        - ss = sa && sb;
+        PUSH
+        - pa = Primer elemento stack b == primer elemento stack a; if b == NULL = return 0;
+        - pb = Primer elemento stack a == primer elemento stack b; if a == NULL = return 0;
+        ROTATE
+        - ra = Desplaza todos los elementos del stack a hacia arriba una posicion. head == last_node. if head == last_node = return 0;
+        - rb = Desplaza todos los elementos del stack b hacia arriba una posicion. head == last_node. if head == last_node = return 0;
+        - rr = ra && rb;
+        REVERSE ROTATE
+        - rra = Desplaza todos los elementos del stack a hacia abajo una posicion. last_node == head. if last_node == head = return 0;
+        - rrb = Desplaza todos los elementos del stack b hacia abajo una posicion. last_node == head. if last_node == head = return 0;
+        - rrr = rra && rrb;
+Tercero: XX
+    Algoritmo (CHEKEAR INFO)
+    Output: Instrucciones.
+
