@@ -32,11 +32,11 @@ int ft_strchr_plus(char *str)
 	return (0);
 }
 
-int check_and_include(char *str, t_list *stack_a)
+int check_and_include(char *str, t_stack_node *stack_a)
 {
-    int     i;
-    long    nbr;
-    t_list  new;
+    int             i;
+    long            nbr;
+    t_stack_node    new;
 
     while (str[i])
     {
@@ -51,12 +51,12 @@ int check_and_include(char *str, t_list *stack_a)
     stack_a->content = nbr;
 }
 
-int parse_and_stack(int argc, char **argv, t_list *stack_a)
+int parse_and_stack(int argc, char **argv, t_stack_node *stack_a)
 {
-    long    i;
-    long    nbr;
-    t_list  new;
-    char    **arr;
+    long            i;
+    long            nbr;
+    t_stack_node    new;
+    char            **arr;
 
     if (!ft_strchr(argv, " "))
     {

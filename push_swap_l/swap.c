@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-static void	swap(t_list **head)
+static void	swap(t_stack_node **head)
 {
 	if (*head == NULL || head == NULL)
 		return ;
@@ -13,21 +13,21 @@ static void	swap(t_list **head)
 	(*head)->prev = NULL;
 }
 
-void	sa(t_list **stack_a, int checker)
+void	sa(t_stack_node **stack_a, int checker)
 {
 	swap(stack_a);
 	if (!checker)
 		ft_printf("sa\n");
 }
 
-void	sb(t_list **stack_b, int checker)
+void	sb(t_stack_node **stack_b, int checker)
 {
 	swap(stack_b);
 	if (!checker)
 		ft_printf("sb\n");
 }
 
-void	ss(t_list **stack_a, t_list **stack_b, int checker)
+void	ss(t_stack_node **stack_a, t_stack_node **stack_b, int checker)
 {
 	swap(a);
 	swap(b);
