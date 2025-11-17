@@ -21,27 +21,32 @@
 
 typedef struct s_stack_node
 {
-	int					content;
+	void *				content;
 	int					current_position;
 	int					total_values;
 	struct s_stack_node	*next;
 	struct s_stack_node	*prev;
 }	t_stack_node;
 // FUNCIONES
-static void	swap (t_list **head);
-void		sa(t_list **stack_a, int checker);
-void		sb(t_list **stack_b, int checker);
-void		ss(t_list **stack_a, t_list **stack_b, int checker);
-static void	push(t_list **dest, t_list **src);
-void		pa(t_list **stack_a, t_list **stack_b, int checker);
-void		pb(t_list **stack_a, t_list **stack_b, int checker);
-static void	rotate(t_list **stack);
-void		ra(t_list **stack_a, int checker);
-void		rb(t_list **stack_b, int checker);
-void		rr(t_list **stack_a, t_list **stack_b, int checker);
-int			parse_and_stack(int argc, char **argv, t_list *stack_a);
-int			check_and_include(char *str, t_list *stack_a);
-int			ft_strchr_plus(char *str);
-void		free_all(char **s, size_t len);
+void		swap (t_stack_node **head);
+void			sa(t_stack_node **stack_a, int checker);
+void			sb(t_stack_node **stack_b, int checker);
+void			ss(t_stack_node **stack_a, t_stack_node **stack_b, int checker);
+void		push(t_stack_node **dest, t_stack_node **src);
+void			pa(t_stack_node **stack_a, t_stack_node **stack_b, int checker);
+void			pb(t_stack_node **stack_a, t_stack_node **stack_b, int checker);
+void		rotate(t_stack_node **stack);
+void			ra(t_stack_node **stack_a, int checker);
+void			rb(t_stack_node **stack_b, int checker);
+void			rr(t_stack_node **stack_a, t_stack_node **stack_b, int checker);
+int				parse_and_stack(int argc, char **argv, t_stack_node *stack_a);
+int				check_and_include(char *str, t_stack_node *stack_a);
+int				ft_strchr_plus(char *str);
+void			free_all(char **s, size_t len);
+t_stack_node	*ft_lstnew_p(void *content);
+void			ft_lstadd_front_p(t_stack_node **lst, t_stack_node *new);
+void			ft_lstdelone_p(t_stack_node *lst, void (*del)(void *));
+void			ft_lstclear_p(t_stack_node **lst, void (*del)(void *));
+
 
 #endif

@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-static void	push(t_stack_node **dest, t_stack_node **src)
+void	push(t_stack_node **dest, t_stack_node **src)
 {
 	t_stack_node *node_to_push;
 

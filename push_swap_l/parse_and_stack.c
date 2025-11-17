@@ -1,3 +1,5 @@
+#include "push_swap.h"
+
 void    free_all(char **s, size_t len)
 {
 	size_t	i;
@@ -47,7 +49,7 @@ int check_and_include(char *str, t_stack_node *stack_a)
     nbr = ft_atol(str);
     if (nbr == NULL)
         return (0);
-    ft_lstadd_front(stack_a, new)
+    ft_lstadd_front_p(stack_a, new)
     stack_a->content = nbr;
 }
 
@@ -65,7 +67,7 @@ int parse_and_stack(int argc, char **argv, t_stack_node *stack_a)
         nbr = ft_atol(argv[0])
         if (nbr == NULL || (nbr < MIN_INT) || (nbr > MAN_INT))
            return (0);
-        stack_a = ft_lstnew(nbr);
+        stack_a = ft_lstnew_p(nbr);
     }
     else
     {
@@ -78,10 +80,11 @@ int parse_and_stack(int argc, char **argv, t_stack_node *stack_a)
             if (!check_and_include(arr[i], stack_a))
             {
                 ft_lstclear(stack_a, free(stack_a));
-                return (free_split(arr, i), 0);
+                return (free_all(arr, i), 0);
             }
             i++;
         }
     }
+    free_all(arr, i);
     return (1);
 }
