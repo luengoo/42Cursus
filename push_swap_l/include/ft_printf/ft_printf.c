@@ -5,123 +5,111 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: alluengo <alluengo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/17 17:46:38 by alluengo          #+#    #+#             */
-/*   Updated: 2025/10/18 17:33:04 by alluengo         ###   ########.fr       */
+/*   Created: 2025/10/22 18:16:35 by alluengo          #+#    #+#             */
+/*   Updated: 2025/10/22 18:56:32 by alluengo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	prcnt_value(const char value)
+int	ft_hex_pointer(unsigned long p)
 {
-	if (value == 'c')
-		return (1);
-	if (value == 's')
-		return (2);
-	if (value == 'p')
-		return (3);
-	if (value == 'd')
-		return (4);
-	if (value == 'i')
-		return (5);
-	if (value == 'u')
-		return (6);
-	if (value == 'x')
-		return (7);
-	if (value == 'X')
-		return (8);
-	if (value == '%')
-		return (9);
-	return (0);
+	int	result;
+	int	hex;
+
+	if (!p)
+		return (ft_putstr("(nil)"));
+	result = ft_putstr("0x");
+	if (result == -1)
+		return (-1);
+	hex = ft_putnbr_base(p, "0123456789abcdef", 0);
+	if (hex == -1)
+		return (-1);
+	return (result + hex);
 }
 
-int	ft_convert(int	i, va_list *list)
+int	ft_check(char format, va_list list)
 {
-	int		j; 
-	char	*str;
-	//void	*ptr;
-	
-	j = 0;
-	if (i == 1)
-		return (ft_putchar_pf(va_arg(*list, int)));
-	if (i == 2)
+	if (format == 'c')
+		return (ft_putchar(va_arg(list, int)));
+	else if (format == 's')
+		return (ft_putstr(va_arg(list, char *)));
+	else if (format == 'p')
+		return (ft_hex_pointer(va_arg(list, unsigned long)));
+	else if (format == 'd' || format == 'i')
+		return (ft_putnbr(va_arg(list, int)));
+	else if (format == 'u')
+		return (ft_putunbr(va_arg(list, unsigned int)));
+	else if (format == 'x')
+		return (ft_putnbr_base(va_arg(list, unsigned int),
+				"0123456789abcdef", 0));
+	else if (format == 'X')
+		return (ft_putnbr_base(va_arg(list, unsigned int),
+				"0123456789ABCDEF", 0));
+	else if (format == '%')
+		return (ft_putchar('%'));
+	return (-1);
+}
+
+int	ft_format(const char *str, va_list list, int *i)
+{
+	int	count;
+
+	count = 0;
+	if (*(str + *i) == '%' && *(str + *i + 1) != '\0')
 	{
-		str = va_arg(*list, char *);
-		return (ft_putstr_pf(str));
+		(*i)++;
+		count = ft_check(*(str + *i), list);
+		if (count == -1)
+			return (-1);
 	}
-	/* if (i == 3)
+	else if (*(str + *i) != '%')
 	{
-		ptr = va_arg(*list, void *);
-		return(i += ft_prntmemory(ptr));
-	} */
-	if (i == 4)
-	{
-		j = va_arg(*list, long long);
-		return(j = ft_putnbr_pf(i));
+		count = ft_putchar(*(str + *i));
+		if (count == -1)
+			return (-1);
 	}
-	if (i == 5)
-	{
-		j = va_arg(*list, long long);
-		return(j = ft_putnbr_pf(i));
-	}
-	if (i == 6)
-	if (i == 4)
-	{
-		j = va_arg(*list, long long);
-		return(j = (ft_unsigned_pf(i)));
-	}
-	/*if (i == 7)
-	if (i == 8)
-	if (i == 8) */
-	return (j);
+	(*i)++;
+	return (count);
 }
 
 int	ft_printf(char const *str, ...)
 {
 	va_list	list;
 	int		i;
-	int		len;
-	int		ret;
-	int		value;
+	int		count;
+	int		res;
 
 	i = 0;
-	ret = 0;
-	len = 0;
+	count = 0;
+	res = 0;
 	va_start(list, str);
-	while (str[i])
+	if (str)
 	{
-		while (str[i] != '%')
+		while (*(str + i))
 		{
-			if (str[i] == '\0')
-				return (ret + len);
-			write (1, &str[i], 1);
-			i++;
-			len++;
-		}
-		if (!(prcnt_value(str[i + 1])) && str[i + 1])
-		{
-			write (1, &str[i], 1);
-			i++;
-			len++;
-			write (1, &str[i], 1);
-			i++;
-			len++;
-		}
-		else
-		{
-			i++;
-			value = prcnt_value(str[i]);
-			ret += ft_convert(value, &list);
-			i++;
+			res = ft_format(str, list, &i);
+			if (res == -1)
+			{
+				va_end(list);
+				return (-1);
+			}
+			count += res;
 		}
 	}
-	return(len + ret);
+	va_end(list);
+	return (count);
 }
 
-int	main()
-{
-	int	i;
-	i = ft_printf("la conversion se hace a: %c, %s", 'n', "Hello world");
-	printf("\n%d", i);
-	return (0);
-}
+// #include <stdio.h>
+
+// int	main()
+// {
+// 	int	i;
+
+// 	i = 0;
+// 	ft_printf("%p\n", NULL);
+// 	printf("%p\n", NULL);
+// 	ft_printf("Numero devuelto de la mia: %d\n", i);
+// 	ft_printf("Numero devuelto de la real: %d\n", i);
+// }

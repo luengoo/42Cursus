@@ -1,8 +1,8 @@
 #include "push_swap.h"
 
-void	push(t_stack_node **dest, t_stack_node **src)
+static void	push(t_list **dest, t_list **src)
 {
-	t_stack_node *node_to_push;
+	t_list *node_to_push;
 
 	if (*src == NULL)
 		return ;
@@ -24,14 +24,14 @@ void	push(t_stack_node **dest, t_stack_node **src)
 	}
 }
 
-void	pa(t_stack_node **stack_a, t_stack_node **stack_b, int checker)
+void	pa(t_list **stack_a, t_list **stack_b, int checker)
 {
 	push(stack_a, stack_b);
 	if (!checker)
 		ft_printf("pa\n");
 }
 
-void	pb(t_stack_node **stack_a, t_stack_node **stack_b, int checker)
+void	pb(t_list **stack_a, t_list **stack_b, int checker)
 {
 	push(stack_b, stack_a);
 	if (!checker)

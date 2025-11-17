@@ -6,7 +6,7 @@
 #    By: alluengo <alluengo@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/29 19:20:37 by alluengo          #+#    #+#              #
-#    Updated: 2025/11/13 16:17:38 by alluengo         ###   ########.fr        #
+#    Updated: 2025/10/22 18:31:57 by alluengo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,9 +23,9 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	@ar rc $(NAME) $(OBJ)
-	@echo "printf created"
+	@echo "$(NAME) created"
 	@ranlib $(NAME)
-	@echo "printf indexed"
+	@echo "$(NAME) indexed"
 
 %.o: %.c
 	@cc $(FLAG) -c $< -o $@
@@ -36,7 +36,7 @@ clean:
 
 fclean: clean
 	@rm -f $(NAME)
-	@echo "printf deleted"
+	@echo "$(NAME) deleted"
 
 re: fclean $(NAME)
 

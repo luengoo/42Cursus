@@ -12,23 +12,54 @@
 
 #include "push_swap.h"
 
+void print_stack(t_list *stack, char *name)
+{
+    t_list *current;
+
+    current = stack;
+    ft_printf("\n=== %s ===\n", name);
+    if (!current)
+    {
+        ft_printf("(vacía)\n");
+        return;
+    }
+    while (current)
+    {
+        ft_printf("%d\n", (long)current->content);
+        current = current->next;
+    }
+    ft_printf("=========\n");
+}
+
 int	main(int argc, char **argv)
 {
-	t_stack_node	*stack_a;
-	t_stack_node	*stack_b;
+	int		i;
+	t_list	*stack_a;
+	t_list	*stack_b;
 
 	stack_a = NULL;
 	stack_b = NULL;
-	if (argc == 1 || (argc == 2 && !argv[1][0]))
-		return (write(2, "Introduce arguments", 19), 0);
-	if (!parse_and_stack(argc, (argv + 1), stack_a))
-		return (write (2, "Invalid arguments", 17), 0);
-	ft_lstnew(stack_b);
-	pa(&stack_a, &stack_b, 0);
-	ra(&stack_a, 0);
-	sa(&stack_a, 0);
-	ft_lstclear_p(&stack_a, (*free));
-	ft_lstclear_p(&stack_b, (*free));
-	//push_swap(stack_a, stack_b);
+	if (argc > 1)
+	{
+		i = 1;
+		if (!ft_strlen(argv[i]))
+			return (0);
+		while (argv[i])
+		{
+			if (parsing(argv[i], &stack_a) == 0)
+				return (write(2, "Error", 5), 0);
+			i++;
+		}
+	}
+	print_stack(stack_a, "stack a");
+	pb(&stack_a, &stack_b, 0);
+	pb(&stack_a, &stack_b, 0);
+	pb(&stack_a, &stack_b, 0);
+	rrr(&stack_a, &stack_b, 0);
+	// rr(&stack_a, &stack_b, 0);
+	// sa(&stack_a, 0);
+	// ss(&stack_a, &stack_b, 0);
+	// print_stack(stack_b, "stack b");
+	// print_stack(stack_a, "post stack a");
 	return (0);
 }

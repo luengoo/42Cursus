@@ -20,9 +20,9 @@
 
 typedef struct s_list
 {
-	void						*content;
-	unsigned long long			content_size;
-	struct s_list				*next;
+	void			*content;
+	struct s_list	*next;
+	struct s_list	*prev;
 }	t_list;
 //INT
 int				ft_atoi(const char *str);

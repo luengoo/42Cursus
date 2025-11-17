@@ -1,87 +1,95 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_utils.c                                  :+:      :+:    :+:   */
+/*   ft_printf_utils1.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alluengo <alluengo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/17 19:08:23 by alluengo          #+#    #+#             */
-/*   Updated: 2025/10/18 17:33:52 by alluengo         ###   ########.fr       */
+/*   Created: 2025/10/22 18:16:51 by alluengo          #+#    #+#             */
+/*   Updated: 2025/10/22 18:29:02 by alluengo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_putchar_pf(int i)
+int	ft_putchar(char c)
 {
-	write (1, &i, 1);
-	return (1);
+	return (write(1, &c, 1));
 }
 
-int	ft_putstr_pf(char *str)
+int	ft_putstr(char *s)
+{
+	int	count;
+
+	count = 0;
+	if (!s)
+		return (ft_putstr("(null)"));
+	while (s[count])
+	{
+		if (ft_putchar(s[count]) == -1)
+			return (-1);
+		count++;
+	}
+	return (count);
+}
+
+int	ft_putunbr(unsigned int n)
 {
 	int	i;
-	
+
 	i = 0;
-	while(str[i] != '\0')
+	if (n > 9)
 	{
-		ft_putchar_pf(str[i]);
-		i++;
+		i = ft_putunbr(n / 10);
+		if (i == -1)
+			return (-1);
 	}
+	if (ft_putchar(n % 10 + '0') == -1)
+		return (-1);
+	i++;
 	return (i);
 }
 
-/* int	ft_prntmemory(void	*ptr)
+int	ft_putnbr(int n)
 {
-	
-} */
-
-int	ft_putnbr_pf(long long nb)
-{
-	long	i;
-
-	i = 0;
-	if (nb < 0)
+	if (n == -2147483648)
 	{
-		write(1, "-", 1);
-		i++;
-		nb = -nb;
-		ft_putnbr_pf(nb);
-	}
-	else if (nb > 9)
-	{
-		ft_putnbr_pf(nb / 10);
-		ft_putnbr_pf(nb % 10);
+		return (ft_putstr("-2147483648"));
 	}
 	else
 	{
-		nb += 48;
-		write(1, &nb, 1);
-		i++;
+		if (n < 0)
+		{
+			if (ft_putchar('-') == -1)
+				return (-1);
+			n = -n;
+			return (ft_putunbr (n) + 1);
+		}
+		return (ft_putunbr(n));
 	}
-	return (i);
 }
 
-int	ft_unsigned_pf(long long nb)
+int	ft_putnbr_base(unsigned long nbr, char *base, int result)
 {
-	unsigned long	i;
+	unsigned long	len_base;
 
-	i = 0;
-	if (nb < 0)
+	len_base = 0;
+	while (base[len_base])
+		len_base++;
+	if (nbr < len_base)
 	{
-		nb = -nb;
-		ft_putnbr_pf(nb);
-	}
-	else if (nb > 9)
-	{
-		ft_putnbr_pf(nb / 10);
-		ft_putnbr_pf(nb % 10);
+		if (ft_putchar(base[nbr]) == -1)
+			return (-1);
+		return (result + 1);
 	}
 	else
 	{
-		nb += 48;
-		write(1, &nb, 1);
-		i++;
+		result = ft_putnbr_base(nbr / len_base, base, result);
+		if (result == -1)
+			return (-1);
+		if (ft_putchar(base[nbr % len_base]) == -1)
+			return (-1);
+		return (result + 1);
 	}
-	return (i);
 }
+

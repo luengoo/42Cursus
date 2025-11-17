@@ -1,12 +1,21 @@
 #include "push_swap.h"
 
-void	rotate(t_stack_node **stack)
+t_list	*ft_lstlast_p(t_list *lst)
 {
-	t_stack_node	*last_node;
+	if (!lst)
+		return (0);
+	while (lst->next)
+		lst = lst->next;
+	return (lst);
+}
+
+static void	rotate(t_list **stack)
+{
+	t_list	*last_node;
 
 	if (stack == NULL || *stack == NULL)
 		return ;
-	last_node = ft_lstlast(*stack);
+	last_node = ft_lstlast_p(*stack);
 	last_node->next = *stack;
 	*stack = (*stack)->next;
 	(*stack)->prev = NULL;
@@ -14,21 +23,21 @@ void	rotate(t_stack_node **stack)
 	last_node->next->next = NULL;
 }
 
-void	ra(t_stack_node **stack_a, int checker)
+void	ra(t_list **stack_a, int checker)
 {
 	rotate(stack_a);
 	if (!checker)
 		ft_printf("ra\n");
 }
 
-void	rb(t_stack_node **stack_b, int checker)
+void	rb(t_list **stack_b, int checker)
 {
 	rotate(stack_b);
 	if (!checker)
 		ft_printf("rb\n");
 }
 
-void	rr(t_stack_node **stack_a, t_stack_node **stack_b, int checker)
+void	rr(t_list **stack_a, t_list **stack_b, int checker)
 {
 	rotate(stack_a);
 	rotate(stack_b);
