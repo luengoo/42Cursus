@@ -9,8 +9,6 @@ static void	reverse_rotate(t_list **stack)
         return;
 
     last = ft_lstlast_p(*stack);
-	if (!last->prev)
-		return ;
     before_last = last->prev;
     before_last->next = NULL;
     last->next = *stack;

@@ -6,7 +6,7 @@
 /*   By: alluengo <alluengo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 16:51:28 by alluengo          #+#    #+#             */
-/*   Updated: 2025/11/13 17:05:07 by alluengo         ###   ########.fr       */
+/*   Updated: 2025/11/20 11:41:03 by alluengo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void		push_swap(t_list **stack_a, t_list **stack_b);
 void		pa(t_list **stack_a, t_list **stack_b, int checker);
 void		pb(t_list **stack_a, t_list **stack_b, int checker);
 int			parsing(char *str, t_list **stack_a);
-void		ft_lstadd_front(t_list **lst, t_list *new);
+void		ft_lstadd_back(t_list **lst, t_list *new);
 t_list		*ft_lstnew(void *content);
 int			list_searcher(t_list *list, long long num);
 int			ft_strchr_plus(char *msg);
