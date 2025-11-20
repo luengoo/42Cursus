@@ -6,7 +6,7 @@
 /*   By: alluengo <alluengo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 16:48:40 by alluengo          #+#    #+#             */
-/*   Updated: 2025/11/13 17:32:09 by alluengo         ###   ########.fr       */
+/*   Updated: 2025/11/20 11:11:41 by alluengo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,11 +55,10 @@ int	main(int argc, char **argv)
 	pb(&stack_a, &stack_b, 0);
 	pb(&stack_a, &stack_b, 0);
 	pb(&stack_a, &stack_b, 0);
-	rrr(&stack_a, &stack_b, 0);
-	// rr(&stack_a, &stack_b, 0);
-	// sa(&stack_a, 0);
-	// ss(&stack_a, &stack_b, 0);
-	// print_stack(stack_b, "stack b");
-	// print_stack(stack_a, "post stack a");
+	rra(&stack_a, 0);
+	print_stack(stack_b, "stack b");
+	print_stack(stack_a, "stack a");
+	rrb(&stack_b, 0);
+	print_stack(stack_b, "stack b");
 	return (0);
 }

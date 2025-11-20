@@ -6,7 +6,7 @@
 #    By: alluengo <alluengo@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/29 19:20:37 by alluengo          #+#    #+#              #
-#    Updated: 2025/11/13 17:27:36 by alluengo         ###   ########.fr        #
+#    Updated: 2025/11/20 11:46:01 by alluengo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -95,6 +95,6 @@ fclean: clean
 re: fclean $(NAME)
 
 bonus : $(OBJ) $(BOBJ)
-		ar rc $(NAME) $(OBJ) $(BOBJ)
+	@ar rc $(NAME) $(OBJ) $(BOBJ)
 
 .PHONY: all, clean, fclean, re, bonus
