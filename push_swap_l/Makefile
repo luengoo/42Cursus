@@ -17,7 +17,8 @@ SRCLIBFT = ./include/libft
 LIBFT = $(SRCLIBFT)/libft.a
 SRCPRINTF = ./include/ft_printf
 FT_PRINTF = $(SRCPRINTF)/libftprintf.a
-SRC = main.c parsing.c push.c swap.c rotate.c reverse_rotate.c utils.c
+SRC = main.c parsing.c push.c swap.c rotate.c reverse_rotate.c utils.c small_sort.c \
+	algorithm.c setting.c rotate_both.c
 OBJ_URL = ./obj
 OBJ = $(SRC:%.c=$(OBJ_URL)/%.o)
 INCLUDE = -I$(SRCLIBFT) -I$(SRCPRINTF)

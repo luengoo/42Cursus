@@ -21,6 +21,7 @@
 # include "include/libft/libft.h"
 
 // FUNCIONES
+void		push_swap(t_list **stack_a, t_list **stack_b);
 void		pa(t_list **stack_a, t_list **stack_b, int checker);
 void		pb(t_list **stack_a, t_list **stack_b, int checker);
 int			parsing(char *str, t_list **stack_a);
@@ -39,6 +40,17 @@ void		ss(t_list **stack_a, t_list **stack_b, int checker);
 void		rra(t_list **stack_a, int checker);
 void		rrb(t_list **stack_b, int checker);
 void		rrr(t_list **stack_a, t_list **stack_b, int checker);
+void		small_sort(t_list **stack_a);
+t_list		*find_highest(t_list *stack_a);
+t_list		*find_smallest(t_list *stack_a);
+void		set_cheapest(t_list *stack_b);
+void		set_price(t_list *stack_a, t_list *stack_b);
+void		set_current_position(t_list *stack);
+void		init_nodes(t_list *stack_a, t_list *stack_b);
+void		rotate_both(t_list **stack_a, t_list **stack_b, t_list *cheapest);
+void		reverse_rotate_both(t_list **stack_a, t_list **stack_b, t_list *cheapest);
+void		set_target(t_list *stack_a, t_list *stack_b);
+
 
 
 

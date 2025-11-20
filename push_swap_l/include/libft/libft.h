@@ -21,6 +21,11 @@
 typedef struct s_list
 {
 	void			*content;
+	int				current_position;
+	int				push_price;
+	int				top_half;
+	int				cheapest;
+	struct s_list	*target;
 	struct s_list	*next;
 	struct s_list	*prev;
 }	t_list;

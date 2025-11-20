@@ -12,24 +12,24 @@
 
 #include "push_swap.h"
 
-void print_stack(t_list *stack, char *name)
-{
-    t_list *current;
+// void print_stack(t_list *stack, char *name)
+// {
+//     t_list *current;
 
-    current = stack;
-    ft_printf("\n=== %s ===\n", name);
-    if (!current)
-    {
-        ft_printf("(vacía)\n");
-        return;
-    }
-    while (current)
-    {
-        ft_printf("%d\n", (long)current->content);
-        current = current->next;
-    }
-    ft_printf("=========\n");
-}
+//     current = stack;
+//     ft_printf("\n=== %s ===\n", name);
+//     if (!current)
+//     {
+//         ft_printf("(vacía)\n");
+//         return;
+//     }
+//     while (current)
+//     {
+//         ft_printf("%d\n", (long)current->content);
+//         current = current->next;
+//     }
+//     ft_printf("=========\n");
+// }
 
 int	main(int argc, char **argv)
 {
@@ -51,15 +51,8 @@ int	main(int argc, char **argv)
 			i++;
 		}
 	}
-	print_stack(stack_a, "stack a");
-	pb(&stack_a, &stack_b, 0);
-	pb(&stack_a, &stack_b, 0);
-	pb(&stack_a, &stack_b, 0);
-	rrr(&stack_a, &stack_b, 0);
-	// rr(&stack_a, &stack_b, 0);
-	// sa(&stack_a, 0);
-	// ss(&stack_a, &stack_b, 0);
-	// print_stack(stack_b, "stack b");
-	// print_stack(stack_a, "post stack a");
+	push_swap(&stack_a, &stack_b);
+	ft_lstclear(&stack_a, free);
+	ft_lstclear(&stack_b, free);
 	return (0);
 }
