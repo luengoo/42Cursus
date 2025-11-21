@@ -2,19 +2,18 @@
 
 static void	reverse_rotate(t_list **stack)
 {
-    t_list *last;
-    t_list *before_last;
+	t_list	*last;
+	int		len;
 
-    if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
-        return;
-
-    last = ft_lstlast_p(*stack);
-    before_last = last->prev;
-    before_last->next = NULL;
-    last->next = *stack;
-    (*stack)->prev = last;
-    last->prev = NULL;
-    *stack = last;
+	len = stack_len(*stack);
+	if (NULL == *stack || NULL == stack || 1 == len)
+		return ;
+	last = ft_lstlast_p(*stack);
+	last->prev->next = NULL;
+	last->next = *stack;
+	last->prev = NULL;
+	*stack = last;
+	last->next->prev = last;
 }
 
 void	rra(t_list **stack_a, int checker)

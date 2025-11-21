@@ -7,43 +7,45 @@ void	finish_rotation(t_list **stack, t_list *top_node, char name)
 		if (name == 'a')
 		{
 			if (top_node->top_half)
-				ra(stack, 0);
+				ra(stack, false);
 			else
-				rra(stack, 0);
+				rra(stack, false);
 		}
 		else if (name == 'b')
 		{
 			if (top_node->top_half)
-				rb(stack, 0);
+				rb(stack, false);
 			else
-				rrb(stack, 0);
+				rrb(stack, false);
 		}
 	}
 }
 
 t_list	*return_cheapest(t_list *stack)
 {
+	if (stack == NULL)
+		return (NULL);
 	while (stack)
 	{
-		if (stack->cheapest == 1)
+		if (stack->cheapest)
 			return (stack);
 		stack = stack->next;
 	}
-	return (0);
+	return (NULL);
 }
 
 static void	move_nodes(t_list **stack_a, t_list **stack_b)
 {
-	t_list	*cheapest;
+	t_list	*cheapest_node;
 
-	cheapest = return_cheapest(*stack_b);
-	if (cheapest->top_half && cheapest->target->top_half)
-		rotate_both(stack_a, stack_b, cheapest);
-	else if (!(cheapest->top_half) && !(cheapest->target->top_half))
-		reverse_rotate_both(stack_a, stack_b, cheapest);
-	finish_rotation(stack_b, cheapest, 'b');
-	finish_rotation(stack_a, cheapest->target, 'a');
-	pa(stack_a, stack_b, 0);
+	cheapest_node = return_cheapest(*stack_b);
+	if (cheapest_node->top_half && cheapest_node->target->top_half)
+		rotate_both(stack_a, stack_b, cheapest_node);
+	else if (!(cheapest_node->top_half) && !(cheapest_node->target->top_half))
+		reverse_rotate_both(stack_a, stack_b, cheapest_node);
+	finish_rotation(stack_b, cheapest_node, 'b');
+	finish_rotation(stack_a, cheapest_node->target, 'a');
+	pa(stack_a, stack_b, false);
 }
 
 void	init_nodes(t_list *stack_a, t_list *stack_b)
@@ -61,8 +63,15 @@ void	push_swap(t_list **stack_a, t_list **stack_b)
 	int		lstlen;
 
 	lstlen = ft_lstsize(*stack_a);
-	while (lstlen-- > 3)
-		pb(stack_b, stack_a, 0);
+	if (lstlen == 1)
+		return ;
+	else if (lstlen == 5)
+		handle_five(stack_a, stack_b);
+	else
+	{
+		while (lstlen-- > 3)
+			pb(stack_a, stack_b, 0);
+	}
 	small_sort(stack_a);
 	while (*stack_b)
 	{

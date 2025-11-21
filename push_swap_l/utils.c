@@ -16,7 +16,7 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 	new->prev = aux;
 }
 
-t_list	*ft_lstnew(void *content)
+t_list	*ft_lstnew(long content)
 {
 	t_list	*node;
 

@@ -31,6 +31,19 @@
 //     ft_printf("=========\n");
 // }
 
+void    free_list(t_list **stack)
+{
+    t_list *tmp;
+
+    while (*stack)
+    {
+        tmp = (*stack)->next;
+        free(*stack);
+        *stack = tmp;
+    }
+}
+
+
 int	main(int argc, char **argv)
 {
 	int		i;
@@ -39,7 +52,9 @@ int	main(int argc, char **argv)
 
 	stack_a = NULL;
 	stack_b = NULL;
-	if (argc > 1)
+	if (argc == 1)
+		return(write(2, "Error, introduce numeros\n", 25));
+	else if (argc > 1)
 	{
 		i = 1;
 		if (!ft_strlen(argv[i]))
@@ -47,12 +62,15 @@ int	main(int argc, char **argv)
 		while (argv[i])
 		{
 			if (parsing(argv[i], &stack_a) == 0)
-				return (write(2, "Error", 5), 0);
+				return (write(2, "Error\n", 6), 0);
 			i++;
 		}
+		if (stack_sorted(stack_a))
+			return (0);
 	}
 	push_swap(&stack_a, &stack_b);
-	ft_lstclear(&stack_a, free);
-	ft_lstclear(&stack_b, free);
+	// print_stack(stack_a, "stack a after push_swaping");
+	free_list(&stack_a);
+	free_list(&stack_b);
 	return (0);
 }

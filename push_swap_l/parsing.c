@@ -31,7 +31,7 @@ static int	parsing_split(char *str, t_list **stack_a)
 			return (free_splited(splited), 0);
 		if (!list_searcher(*stack_a, num))
 			return (free_splited(splited), 0);
-		new = ft_lstnew((void *)num);
+		new = ft_lstnew(num);
 		ft_lstadd_back(stack_a, new);
 		i++;
 	}
@@ -52,7 +52,7 @@ int	parsing(char *str, t_list **stack_a)
 		return (0);
 	if (!list_searcher(*stack_a, num))
 		return (0);
-	new = ft_lstnew((void *)num);
+	new = ft_lstnew(num);
 	ft_lstadd_back(stack_a, new);
 	return (1);
 }

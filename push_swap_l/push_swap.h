@@ -17,6 +17,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <limits.h>
+# include <stdbool.h>
 # include "include/ft_printf/ft_printf.h"
 # include "include/libft/libft.h"
 
@@ -26,7 +27,7 @@ void		pa(t_list **stack_a, t_list **stack_b, int checker);
 void		pb(t_list **stack_a, t_list **stack_b, int checker);
 int			parsing(char *str, t_list **stack_a);
 void		ft_lstadd_back(t_list **lst, t_list *new);
-t_list		*ft_lstnew(void *content);
+t_list		*ft_lstnew(long content);
 int			list_searcher(t_list *list, long long num);
 int			ft_strchr_plus(char *msg);
 long long	ft_atoll(const char *nptr);
@@ -41,8 +42,7 @@ void		rra(t_list **stack_a, int checker);
 void		rrb(t_list **stack_b, int checker);
 void		rrr(t_list **stack_a, t_list **stack_b, int checker);
 void		small_sort(t_list **stack_a);
-t_list		*find_highest(t_list *stack_a);
-t_list		*find_smallest(t_list *stack_a);
+t_list		*find_smallest(t_list *stack);
 void		set_cheapest(t_list *stack_b);
 void		set_price(t_list *stack_a, t_list *stack_b);
 void		set_current_position(t_list *stack);
@@ -50,6 +50,12 @@ void		init_nodes(t_list *stack_a, t_list *stack_b);
 void		rotate_both(t_list **stack_a, t_list **stack_b, t_list *cheapest);
 void		reverse_rotate_both(t_list **stack_a, t_list **stack_b, t_list *cheapest);
 void		set_target(t_list *stack_a, t_list *stack_b);
+void		handle_five(t_list **a, t_list **b);
+bool		stack_sorted(t_list *stack);
+void		finish_rotation(t_list **stack, t_list *top_node, char name);
+int			stack_len(t_list *stack);
+
+
 
 
 
