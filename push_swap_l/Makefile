@@ -6,7 +6,7 @@
 #    By: alluengo <alluengo@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/13 16:11:45 by alluengo          #+#    #+#              #
-#    Updated: 2025/11/13 16:15:31 by alluengo         ###   ########.fr        #
+#    Updated: 2025/11/27 12:04:05 by alluengo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ LIBFT = $(SRCLIBFT)/libft.a
 SRCPRINTF = ./include/ft_printf
 FT_PRINTF = $(SRCPRINTF)/libftprintf.a
 SRC = main.c parsing.c push.c swap.c rotate.c reverse_rotate.c utils.c small_sort.c \
-	algorithm.c setting.c rotate_both.c
+	algorithm.c setting.c rotate_both.c utils2.c
 OBJ_URL = ./obj
 OBJ = $(SRC:%.c=$(OBJ_URL)/%.o)
 INCLUDE = -I$(SRCLIBFT) -I$(SRCPRINTF)

@@ -6,43 +6,11 @@
 /*   By: alluengo <alluengo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 16:48:40 by alluengo          #+#    #+#             */
-/*   Updated: 2025/11/20 11:11:41 by alluengo         ###   ########.fr       */
+/*   Updated: 2025/11/27 12:47:32 by alluengo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-// void print_stack(t_list *stack, char *name)
-// {
-//     t_list *current;
-
-//     current = stack;
-//     ft_printf("\n=== %s ===\n", name);
-//     if (!current)
-//     {
-//         ft_printf("(vacía)\n");
-//         return;
-//     }
-//     while (current)
-//     {
-//         ft_printf("%d\n", (long)current->content);
-//         current = current->next;
-//     }
-//     ft_printf("=========\n");
-// }
-
-void    free_list(t_list **stack)
-{
-    t_list *tmp;
-
-    while (*stack)
-    {
-        tmp = (*stack)->next;
-        free(*stack);
-        *stack = tmp;
-    }
-}
-
 
 int	main(int argc, char **argv)
 {
@@ -53,7 +21,7 @@ int	main(int argc, char **argv)
 	stack_a = NULL;
 	stack_b = NULL;
 	if (argc == 1)
-		return(write(2, "Error, introduce numeros\n", 25));
+		return (write(2, "Error, introduce numeros\n", 25));
 	else if (argc > 1)
 	{
 		i = 1;
@@ -68,9 +36,6 @@ int	main(int argc, char **argv)
 		if (stack_sorted(stack_a))
 			return (0);
 	}
-	push_swap(&stack_a, &stack_b);
-	// print_stack(stack_a, "stack a after push_swaping");
-	free_list(&stack_a);
-	free_list(&stack_b);
+	push_and_free(stack_a, stack_b);
 	return (0);
 }

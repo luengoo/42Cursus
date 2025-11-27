@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   algorithm.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: alluengo <alluengo@student.42madrid.com    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/11/27 12:00:05 by alluengo          #+#    #+#             */
+/*   Updated: 2025/11/27 13:01:21 by alluengo         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 void	finish_rotation(t_list **stack, t_list *top_node, char name)
@@ -34,7 +46,7 @@ t_list	*return_cheapest(t_list *stack)
 	return (NULL);
 }
 
-static void	move_nodes(t_list **stack_a, t_list **stack_b)
+void	move_nodes(t_list **stack_a, t_list **stack_b)
 {
 	t_list	*cheapest_node;
 
@@ -72,12 +84,7 @@ void	push_swap(t_list **stack_a, t_list **stack_b)
 		while (lstlen-- > 3)
 			pb(stack_a, stack_b, 0);
 	}
-	small_sort(stack_a);
-	while (*stack_b)
-	{
-		init_nodes(*stack_a, *stack_b);
-		move_nodes(stack_a, stack_b);
-	}
+	sort_init_move(stack_a, stack_b);
 	set_current_position(*stack_a);
 	smallest = find_smallest(*stack_a);
 	if (smallest->top_half)

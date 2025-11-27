@@ -6,7 +6,7 @@
 /*   By: alluengo <alluengo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 16:51:28 by alluengo          #+#    #+#             */
-/*   Updated: 2025/11/20 11:41:03 by alluengo         ###   ########.fr       */
+/*   Updated: 2025/11/27 12:24:44 by alluengo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,11 @@ void		handle_five(t_list **a, t_list **b);
 bool		stack_sorted(t_list *stack);
 void		finish_rotation(t_list **stack, t_list *top_node, char name);
 int			stack_len(t_list *stack);
-
+void		sort_init_move(t_list **stack_a, t_list **stack_b);
+void		move_nodes(t_list **stack_a, t_list **stack_b);
+void		push_and_free(t_list *stack_a, t_list *stack_b);
+void		print_stack(t_list *stack, char *name);
+void		free_list(t_list **stack);
 
 
 
