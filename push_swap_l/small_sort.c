@@ -27,7 +27,7 @@ bool	stack_sorted(t_list *stack)
 
 t_list	*find_smallest(t_list *stack)
 {
-	int 	smallest;
+	int		smallest;
 	t_list	*smallest_node;
 
 	if (stack == NULL)
@@ -45,10 +45,10 @@ t_list	*find_smallest(t_list *stack)
 	return (smallest_node);
 }
 
-static t_list *find_highest(t_list *stack)
+static t_list	*find_highest(t_list *stack)
 {
 	int		highest;
-	t_list  *highest_node;
+	t_list	*highest_node;
 
 	if (stack == NULL)
 		return (NULL);

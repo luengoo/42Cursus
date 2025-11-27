@@ -31,14 +31,14 @@ static void	reverse_rotate(t_list **stack)
 void	rra(t_list **stack_a, int checker)
 {
 	reverse_rotate(stack_a);
-	if(!checker)
+	if (!checker)
 		ft_printf("rra\n");
 }
 
 void	rrb(t_list **stack_b, int checker)
 {
 	reverse_rotate(stack_b);
-	if(!checker)
+	if (!checker)
 		ft_printf("rrb\n");
 }
 
@@ -46,6 +46,6 @@ void	rrr(t_list **stack_a, t_list **stack_b, int checker)
 {
 	reverse_rotate(stack_a);
 	reverse_rotate(stack_b);
-	if(!checker)
+	if (!checker)
 		ft_printf("rrr\n");
 }

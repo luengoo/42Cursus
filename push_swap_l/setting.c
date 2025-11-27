@@ -60,13 +60,13 @@ void	set_target(t_list *stack_a, t_list *stack_b)
 		current_a = stack_a;
 		while (current_a)
 		{
-			if (current_a->content > stack_b->content 
+			if (current_a->content > stack_b->content
 				&& current_a->content < best_match_index)
-				{
-					best_match_index = current_a->content;
-					target_node = current_a;
-				}
-				current_a = current_a->next;
+			{
+				best_match_index = current_a->content;
+				target_node = current_a;
+			}
+			current_a = current_a->next;
 		}
 		if (best_match_index == INT_MAX)
 			stack_b->target = find_smallest(stack_a);

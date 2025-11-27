@@ -6,7 +6,7 @@
 /*   By: alluengo <alluengo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 16:48:40 by alluengo          #+#    #+#             */
-/*   Updated: 2025/11/27 12:47:32 by alluengo         ###   ########.fr       */
+/*   Updated: 2025/11/27 17:09:39 by alluengo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	main(int argc, char **argv)
 	stack_a = NULL;
 	stack_b = NULL;
 	if (argc == 1)
-		return (write(2, "Error, introduce numeros\n", 25));
+		return (0);
 	else if (argc > 1)
 	{
 		i = 1;
@@ -34,7 +34,7 @@ int	main(int argc, char **argv)
 			i++;
 		}
 		if (stack_sorted(stack_a))
-			return (0);
+			return (free_list(&stack_a), 0);
 	}
 	push_and_free(stack_a, stack_b);
 	return (0);

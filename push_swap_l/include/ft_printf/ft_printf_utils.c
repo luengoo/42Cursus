@@ -92,4 +92,3 @@ int	ft_putnbr_base(unsigned long nbr, char *base, int result)
 		return (result + 1);
 	}
 }
-

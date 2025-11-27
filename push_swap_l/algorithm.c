@@ -54,7 +54,7 @@ void	move_nodes(t_list **stack_a, t_list **stack_b)
 	if (cheapest_node->top_half && cheapest_node->target->top_half)
 		rotate_both(stack_a, stack_b, cheapest_node);
 	else if (!(cheapest_node->top_half) && !(cheapest_node->target->top_half))
-		reverse_rotate_both(stack_a, stack_b, cheapest_node);
+		re_ro_both(stack_a, stack_b, cheapest_node);
 	finish_rotation(stack_b, cheapest_node, 'b');
 	finish_rotation(stack_a, cheapest_node->target, 'a');
 	pa(stack_a, stack_b, false);

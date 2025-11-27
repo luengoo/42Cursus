@@ -14,20 +14,20 @@
 
 static void	swap(t_list **head)
 {
-	t_list *first;
-	t_list *second;
-	
+	t_list	*first;
+	t_list	*second;
+
 	if (*head == NULL || (*head)->next == NULL)
 		return ;
 	first = *head;
 	second = first->next;
 	first->next = second->next;
-	if (second->next) 
-	        second->next->prev = first;
+	if (second->next)
+		second->next->prev = first;
 	second->prev = NULL;
-    second->next = first;
-    first->prev = second;    
-    *head = second;
+	second->next = first;
+	first->prev = second;
+	*head = second;
 }
 
 void	sa(t_list **stack_a, int checker)

@@ -56,7 +56,6 @@ void	sort_init_move(t_list **stack_a, t_list **stack_b)
 void	push_and_free(t_list *stack_a, t_list *stack_b)
 {
 	push_swap(&stack_a, &stack_b);
-	// print_stack(stack_a, "stack a after push_swaping");
 	free_list(&stack_a);
 	free_list(&stack_b);
 }

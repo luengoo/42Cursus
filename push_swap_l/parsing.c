@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parsing.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: alluengo <alluengo@student.42madrid.com    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/11/27 15:07:00 by alluengo          #+#    #+#             */
+/*   Updated: 2025/11/27 17:14:46 by alluengo         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 static void	free_splited(char **splited)
@@ -25,12 +37,12 @@ static int	parsing_split(char *str, t_list **stack_a)
 	while (splited[i])
 	{
 		if (!ft_strchr_plus(splited[i]))
-			return (free_splited(splited), 0);
+			return (free_splited(splited), free_list(stack_a), 0);
 		num = ft_atoll(splited[i]);
 		if (num > 2147483647 || num < -2147483648)
-			return (free_splited(splited), 0);
+			return (free_splited(splited), free_list(stack_a), 0);
 		if (!list_searcher(*stack_a, num))
-			return (free_splited(splited), 0);
+			return (free_splited(splited), free_list(stack_a), 0);
 		new = ft_lstnew(num);
 		ft_lstadd_back(stack_a, new);
 		i++;
@@ -46,12 +58,12 @@ int	parsing(char *str, t_list **stack_a)
 	if (ft_strchr(str, ' '))
 		return (parsing_split(str, stack_a));
 	if (!ft_strchr_plus (str))
-		return (0);
+		return (free_list(stack_a), 0);
 	num = ft_atoll(str);
 	if (num > 2147483647 || num < -2147483648)
-		return (0);
+		return (free_list(stack_a), 0);
 	if (!list_searcher(*stack_a, num))
-		return (0);
+		return (free_list(stack_a), 0);
 	new = ft_lstnew(num);
 	ft_lstadd_back(stack_a, new);
 	return (1);

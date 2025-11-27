@@ -14,7 +14,7 @@
 
 static void	push(t_list **dest, t_list **src)
 {
-	t_list *node_to_push;
+	t_list	*node_to_push;
 
 	if (*src == NULL)
 		return ;

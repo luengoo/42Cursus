@@ -48,7 +48,7 @@ void		set_price(t_list *stack_a, t_list *stack_b);
 void		set_current_position(t_list *stack);
 void		init_nodes(t_list *stack_a, t_list *stack_b);
 void		rotate_both(t_list **stack_a, t_list **stack_b, t_list *cheapest);
-void		reverse_rotate_both(t_list **stack_a, t_list **stack_b, t_list *cheapest);
+void		re_ro_both(t_list **stack_a, t_list **stack_b, t_list *cheapest);
 void		set_target(t_list *stack_a, t_list *stack_b);
 void		handle_five(t_list **a, t_list **b);
 bool		stack_sorted(t_list *stack);
@@ -59,9 +59,5 @@ void		move_nodes(t_list **stack_a, t_list **stack_b);
 void		push_and_free(t_list *stack_a, t_list *stack_b);
 void		print_stack(t_list *stack, char *name);
 void		free_list(t_list **stack);
-
-
-
-
 
 #endif
