@@ -1,52 +1,59 @@
 class SecurePlant:
 	factory = []
-	errors = []
-	plants_in_factory = 0
+	errors = []						#In this process we will check if the values are correct. If they are not, we will index the error in here
+	plants_in_factory = 0			#So we can display it later on.
 	class Plant:
-		def __init__(self, name, set_height, set_age):
+		def __init__(self, name, height, age):
 			self.name = name		#Plant's name
 			try:
-				self.set_height = set_height	#Plant's height in CM. Here we call the height validation function.
+				self.height = height	#Plant's height in CM. Here we call the set_height validation function and the get_height function too.
 			except ValueError as e:
 				SecurePlant.errors = SecurePlant.errors + [f"Invalid operation attempted: {e} [REJECTED]\nSecurity: Negative height rejected\n"]
 			try:
-				self.set_age = set_age			#Plant's age in days. Here we call the age validation function.
+				self.age = age			#Plant's age in days. Here we call the set_age validation function and get_age function too.
 			except ValueError as e:
 				SecurePlant.errors = SecurePlant.errors + [f"Invalid operation attempted: {e} [REJECTED]\nSecurity: Negative age rejected\n"]
-		@property
-		def	height(self):			#Property is used to pretect. We use it so height is ridden as a variable
-			return self._height		#but it actually is executing code.
 		
-		@height.setter				 #The setter is used to make some checks before we assign a value to a
-		def	set_height(self, value): #content. It works with protected data.
+		@property
+		def	height(self):				#Here we define as a property for security, the setter and getter needs this.
+			return self.__height
+		
+		@height.setter				 	#The setter is used to make some checks before we assign a value to a
+		def	height(self, value): 		#content. It works with protected data.
 			if value < 0:
-				raise ValueError(f"height {value}")													#Here we set the height protecting it, so
-			self._height = value
+				raise ValueError(f"height {value}")		#Here we set the height protecting it, so
+			self.__height = value						#It cant be a negative value.
+
+		@height.getter
+		def	get_height(self):
+			return self.__height		#Here we get the info securely.
 
 		@property
 		def	age(self):
-			return self._age
-							#It cant be a negative value.
+			return self.__age			#Then we do the same with the age.
+
+		@age.getter
+		def	get_age(self):
+			return self.__age
 		
 		@age.setter
-		def	set_age(self, value):
+		def	age(self, value):
 			if value < 0:
-				raise ValueError(f"age {value}")									#Now we do the same with age.
-			self._age = value
+				raise ValueError(f"age {value}")
+			self.__age = value
 	
 	@classmethod
 	def create_plant(cls, name, height, age):
 		plant = cls.Plant(name, height, age)
-		if hasattr(plant, "_height") and hasattr(plant, "_age"):
-			cls.factory = cls.factory + [plant]
+		if hasattr(plant, "_Plant__height") and hasattr(plant, "_Plant__age"):	#In this method we create the plant, but only if it has in its
+			cls.factory = cls.factory + [plant]									#attributes height and age.
 			cls.plants_in_factory += 1
 		return plant
 
 def ft_plant_factory():
 	SecurePlant.create_plant("Rose", 25, 30)
-	SecurePlant.create_plant("Cactus", -15, 120)   # Error en altura
-	SecurePlant.create_plant("Lotus", 7, -5)       # Error en edad
-	SecurePlant.create_plant("Oak tree", 120, 30)
+	SecurePlant.create_plant("Cactus", -15, 120)   #Height error
+	SecurePlant.create_plant("Lotus", 7, 5)
 
 	print("=== Garden Security System ===")
 	for plant in SecurePlant.factory:
