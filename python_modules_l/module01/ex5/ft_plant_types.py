@@ -1,7 +1,7 @@
-class Plant:
-	def __init__(self, name, height, age):
-		self.name = name
-		self.height = height
+class Plant:											#In this exercise we learn about parent classes and herence. We have to make
+	def __init__(self, name, height, age):				#The classification easier, making a Plant class that will be the common
+		self.name = name								#data in every plant added, then make a  Flower, Tree and Vegetable class
+		self.height = height							#with different data each. It was pretty easy to understand.
 		self.age = age
 
 class Flower(Plant):

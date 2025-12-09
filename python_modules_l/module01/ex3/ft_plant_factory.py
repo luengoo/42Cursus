@@ -15,11 +15,11 @@ class PlantFactory:
 		return plant								#@classmethod in google or a prefered AI.
 
 def	ft_plant_factory():
-	rose = PlantFactory.create_plant("Rose", 25, 30)
-	sunflower = PlantFactory.create_plant("Sunflower", 80, 45)
-	cactus = PlantFactory.create_plant("Cactus", 15, 120)
-	lotus = PlantFactory.create_plant("Lotus", 7, 15)
-	oak_tree = PlantFactory.create_plant("Oak tree", 120, 30)
+	PlantFactory.create_plant("Rose", 25, 30)
+	PlantFactory.create_plant("Sunflower", 80, 45)
+	PlantFactory.create_plant("Cactus", 15, 120)
+	PlantFactory.create_plant("Lotus", 7, 15)
+	PlantFactory.create_plant("Oak tree", 120, 30)
 	
 	print("=== Plant factory Output ===")
 	for plant in PlantFactory.factory:
