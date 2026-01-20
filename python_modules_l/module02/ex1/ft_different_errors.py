@@ -1,12 +1,37 @@
 def garden_operations():
-	value = int(input())
-	aux_errors(value)
+	try:
+		print("Testing ValueError...")
+		int("abc")
+	except ValueError as e:
+		print(f"Caught ValueError: {e}\n")
+	try:
+		print("Testing ZeroDivisionError...")
+		10 / 0
+	except ZeroDivisionError as e:
+		print(f"Caught ZeroDivisionError: {e}\n")
+	try:
+		print("Testing FileNotFoundError...")
+		open("missing.txt")
+	except FileNotFoundError as e:
+		print(f"Caught FileNotFoundError: {e}\n")
+	try:
+		print("Testing KeyError...")
+		my_garden = {"vegetable": 2}
+		my_garden["missing\_plant"]
+	except KeyError as e:
+		print(f"Caught KeyError: {e}\n")
+	print("Testing multiple errors together...")
+	try:
+		int("xyz")
+		10 / 0
+	except (ValueError, ZeroDivisionError):
+		print("Caught an error, but program continues!\n")
+	print("All error types tested succesfully!")
+
+	
 
 def test_error_types():
-	try:
-		garden_operations()
-	except (ValueError, ZeroDivisionError, FileNotFoundError, KeyError):
-		print("")
-		
+	print("=== Garden Error Types Demo ===\n")
+	garden_operations()
 
-def aux_errors(value):
+test_error_types()
