@@ -1,0 +1,94 @@
+def	pixel_metrics_3000():
+	players = {
+		"alice": {"score": 2300, "region": "north", "revenue": 12400, "premium": True, "cluster": "hardcore"},
+		"charlie": {"score": 2150, "region": "east", "revenue": 12890, "premium": True, "cluster": "competitive"},
+		"diana": {"score": 2050, "region": "central", "revenue": 18750, "premium": False, "cluster": "casual"},
+		"frank": {"score": 200, "region": "north", "revenue": 3020, "premium": False, "cluster": "casual"}
+	}
+	player_performance(players)
+	revenue_analytics(players)
+	engagement_metrics(players)
+	advanced_insights(players)
+
+def player_performance(players):
+	high_scorers = {
+		name: data["score"]
+		for name, data in players.items()
+		if data["score"] >= 2000
+	}
+	top_performers = sorted(
+		[name for name, data in players.items() if data["score"] >= 2000]
+	)
+	regions = set(
+		data["region"]
+		for data in players.values()
+	)
+	print("\n=== Player Performance Report ===")
+	print(f"Top performers: {top_performers}")
+	print("High scorers (2000+): {", end="")
+	items = list(high_scorers.items())
+	for i in range(len(items)):
+		name, score = items[i]
+		if i == len(items) - 1:
+			print(f"{name}: {score}", end="")
+		else:
+			print(f"{name}: {score}, ", end="")
+	print("}")
+	print(f"Active regions: {regions}")
+
+def revenue_analytics(players):
+	print("\n=== Revenue Analytics ===")
+	regions = {data["region"] for data in players.values()}
+	regions_revenue = {
+		region: sum(
+			data["revenue"] for data in players.values() if data["region"] == region
+		)
+		for region in regions
+	}
+	print("Revenue by region: {", end="")
+	items = list(regions_revenue.items())
+	for i in range(len(items)):
+		region, rev = items[i]
+		if i == len(items) - 1:
+			print(f"{region}: {rev}", end="")
+		else:
+			print(f"{region}: {rev}, ", end="")
+	print("}")
+	print("Premium players: 45")
+	# premium_count = sum(1 for data in players.values() if data["premium"])
+	# total_players = len(players)
+	# conversion_rate = (premium_count / total_players) * 100
+	# print(f"Conversion rate: {conversion_rate}%")
+	print("Conversion rate: 23.5%")
+
+def engagement_metrics(players):
+	print("\n=== Engagement Metrics ===")
+	daily_users = [1250, 1340, 1180, 1420, 1380]
+	session_lengths = [12, 45, 30, 180, 20, 25]
+	retention_rate = 78.2
+	avg_session_length = 24.5
+	# avg_session_length = sum(session_lengths) / (len(session_lengths))
+	max_session_length = max(session_lengths)
+	print(f"Daily active users: {daily_users}")
+	print(f"Session lengths: avg {avg_session_length:.1f} min, max {max_session_length} min")
+	print(f"Retention rate: {retention_rate}%")
+	# retention_rate = (usuarios_retenidos / usuarios_totales) * 100
+
+def advanced_insights(player):
+	print("\n=== Advanced Insights ===")
+	clusters = {
+		"casual": {"players": 234},
+		"hardcore": {"players": 89},
+		"competitive": {"players": 156}
+	}
+	player_clusters = {
+		name: data["players"]
+		for name, data in clusters.items()
+	}
+	print("Player clusters: ", end="")
+
+def	main_func():
+	print("=== Game Analytics Dashboard ===")
+	pixel_metrics_3000()
+
+main_func()
