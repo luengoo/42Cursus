@@ -76,16 +76,29 @@ def engagement_metrics(players):
 
 def advanced_insights(player):
 	print("\n=== Advanced Insights ===")
+	players_at_risk = 12
+	recommendations_gen = 89
 	clusters = {
 		"casual": {"players": 234},
 		"hardcore": {"players": 89},
 		"competitive": {"players": 156}
 	}
+	
+	print("Player clusters: {", end="")
 	player_clusters = {
-		name: data["players"]
-		for name, data in clusters.items()
-	}
-	print("Player clusters: ", end="")
+			name: data["players"]
+			for name, data in clusters.items()
+		}
+	items = list(player_clusters.items())
+	for i in range(len(items)):
+		name, count = items[i]
+		if i == len(items) - 1:
+			print(f"{name}: {count}", end="")
+		else:
+			print(f"{name}: {count}, ", end="")
+	print("}")
+	print(f"Churn prediction: {players_at_risk} players at risk")
+	print(f"Recommendation engine: {recommendations_gen} matches generated")
 
 def	main_func():
 	print("=== Game Analytics Dashboard ===")
