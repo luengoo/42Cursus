@@ -1,17 +1,23 @@
 class Plant:
-	def __init__(plant, name, height, age):
-		plant.name = name		#Plant's name
-		plant.height = height	#Plant's height in CM
-		plant.age = age			#Plant's age in days
+    def __init__(self, name: str, height: int, age: int) -> None:
+        self.name: str = name
+        self.height: int = height
+        self.age: int = age
 
-def	ft_garden_data():
-	print("=== Garden Plant Registry ===")
-	p1 = Plant("Rose", 25, 30)
-	p2 = Plant("Sunflower", 80, 45)
-	p3 = Plant("Cactus", 15, 120)
-	print(p1.name, ":", p1.height, "cm,", p1.age, "days old")
-	print(p2.name, ":", p2.height, "cm,", p2.age, "days old")
-	print(p3.name, ":", p3.height, "cm,", p3.age, "days old")
 
-ft_garden_data()
+def ft_garden_data() -> None:
+    print("=== Garden Plant Registry ===")
 
+    plants: list[Plant] = [
+        Plant("Rose", 25, 30),
+        Plant("Sunflower", 80, 45),
+        Plant("Cactus", 15, 120)
+    ]
+
+    for plant in plants:
+        print(f"{plant.name.capitalize()}: ", end="")
+        print(f"{plant.height}cm, {plant.age} days old")
+
+
+if __name__ == "__main__":
+    ft_garden_data()

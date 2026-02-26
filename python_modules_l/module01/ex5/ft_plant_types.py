@@ -1,45 +1,103 @@
-class Plant:											#In this exercise we learn about parent classes and herence. We have to make
-	def __init__(self, name, height, age):				#The classification easier, making a Plant class that will be the common
-		self.name = name								#data in every plant added, then make a  Flower, Tree and Vegetable class
-		self.height = height							#with different data each. It was pretty easy to understand.
-		self.age = age
+class Plant:
+    """Base class for all plants."""
+
+    def __init__(self, name: str, height: float, age: int) -> None:
+        self.name: str = name
+        self.height: float = height
+        self.age: int = age
+
 
 class Flower(Plant):
-	def __init__(self, name, height, age, color):
-		super().__init__(name, height, age)
-		self.color = color
-	
-	def	bloom(self):
-		if self.age > 10:
-			print(self.name, "is blooming beautifully!\n")
-		else:
-			print(self.name, "is too young to bloom. Wait a few days\n")
+    """Flower plant type."""
+
+    def __init__(
+        self,
+        name: str,
+        height: float,
+        age: int,
+        color: str
+    ) -> None:
+        super().__init__(name, height, age)
+        self.color: str = color
+
+    def bloom(self) -> None:
+        if self.age > 10:
+            print(f"{self.name} is blooming beautifully!\n")
+        else:
+            print(f"{self.name} is too young to bloom. Wait a few days\n")
+
 
 class Tree(Plant):
-	def __init__(self, name, height, age, trunk_diameter):
-		super().__init__(name, height, age)
-		self.trunk_diameter = trunk_diameter
+    """Tree plant type."""
 
-	def produce_shade(self):
-		shade = (self.trunk_diameter * self.height) / 100
-		print(self.name, "provides", shade, "square meters of shade\n")
+    def __init__(
+        self,
+        name: str,
+        height: float,
+        age: int,
+        trunk_diameter: float
+    ) -> None:
+        super().__init__(name, height, age)
+        self.trunk_diameter: float = trunk_diameter
+
+    def produce_shade(self) -> None:
+        shade: float = (self.trunk_diameter * self.height) / 100
+        print(
+            f"{self.name} provides {shade} "
+            "square meters of shade\n"
+        )
+
 
 class Vegetable(Plant):
-	def __init__(self, name, height, age, harvest_season, nutritional_value):
-		super().__init__(name, height, age)
-		self.harvest_season = harvest_season
-		self.nutritional_value = nutritional_value
+    """Vegetable plant type."""
+
+    def __init__(
+        self,
+        name: str,
+        height: float,
+        age: int,
+        harvest_season: str,
+        nutritional_value: str
+    ) -> None:
+        super().__init__(name, height, age)
+        self.harvest_season: str = harvest_season
+        self.nutritional_value: str = nutritional_value
 
 
-def	ft_plant_types():
-	rose = Flower("Rose", 25, 30, "red")
-	oak = Tree("Oak", 500, 1825, 50)
-	tomato = Vegetable("Tomato", 80, 90, "summer", "vitamin C")
-	print("=== Garden Plant Types ===\n")
-	print(rose.name, "(Flower):", f"{rose.height}cm, {rose.age} days, {rose.color} color")
-	rose.bloom()
-	print(oak.name, "(Tree):", f"{oak.height}cm, {oak.age} days, {oak.trunk_diameter}cm diameter")
-	oak.produce_shade()
-	print(tomato.name, "(Vegetable):", f"{tomato.height}cm, {tomato.age} days, {tomato.harvest_season} harvest\n{tomato.name} is rich in {tomato.nutritional_value}\n")
+def ft_plant_types() -> None:
+    rose: Flower = Flower("Rose", 25, 30, "red")
+    oak: Tree = Tree("Oak", 500, 1825, 50)
+    tomato: Vegetable = Vegetable(
+        "Tomato",
+        80,
+        90,
+        "summer",
+        "vitamin C"
+    )
 
-ft_plant_types()
+    print("=== Garden Plant Types ===\n")
+
+    print(
+        f"{rose.name} (Flower): "
+        f"{rose.height}cm, {rose.age} days, "
+        f"{rose.color} color"
+    )
+    rose.bloom()
+
+    print(
+        f"{oak.name} (Tree): "
+        f"{oak.height}cm, {oak.age} days, "
+        f"{oak.trunk_diameter}cm diameter"
+    )
+    oak.produce_shade()
+
+    print(
+        f"{tomato.name} (Vegetable): "
+        f"{tomato.height}cm, {tomato.age} days, "
+        f"{tomato.harvest_season} harvest\n"
+        f"{tomato.name} is rich in {tomato.nutritional_value}\n"
+    )
+
+
+if __name__ == "__main__":
+    ft_plant_types()
