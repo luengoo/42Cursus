@@ -1,8 +1,8 @@
-def achievement_hunter(player, player_ach):
+def achievement_hunter(player, player_ach) -> None:
     print(f"Player {player} achievements: {player_ach}")
 
 
-def all_achievements():
+def all_achievements() -> None:
     print("\n=== Achievement Analyitics ===")
     unique = {'boss_slayer', 'collector', 'first_kill', 'level_10',
               'perfectionist', 'speed_demon', 'treasure_hunter'}
@@ -10,7 +10,7 @@ def all_achievements():
     print(f"Total unique achievements: {len(unique)}\n")
 
 
-def special_ach(player1_ach, player2_ach, player3_ach, p1, p2):
+def special_ach(player1_ach, player2_ach, player3_ach, p1, p2) -> None:
     common_all = player1_ach.intersection(player2_ach, player3_ach)
     print(f"Common to all players: {common_all}")
     rare1 = player1_ach.difference(player2_ach.union(player3_ach))
@@ -26,7 +26,7 @@ def special_ach(player1_ach, player2_ach, player3_ach, p1, p2):
     print(f"{p2} unique: {unique2}")
 
 
-def main_func():
+def main_func() -> None:
     print("=== Achievement Tracker System ===\n")
     player1 = "Alice"
     player2 = "Bob"

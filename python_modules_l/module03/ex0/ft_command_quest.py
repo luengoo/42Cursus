@@ -1,7 +1,7 @@
 import sys
 
 
-def handle_argv():
+def handle_argv() -> None:
     print("=== Command Quest ===")
     i = 1
     if len(sys.argv) == 1:

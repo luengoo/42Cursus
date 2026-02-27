@@ -1,4 +1,4 @@
-def game_data():
+def game_data() -> None:
     print("Processing 1000 game events...\n")
     nbr = data_stream()
     next(nbr)
@@ -8,7 +8,7 @@ def game_data():
     print("...\n")
 
 
-def stream_analytics():
+def stream_analytics() -> None:
     total = 0
     high_level = 0
     treasure = 0
@@ -29,17 +29,17 @@ def stream_analytics():
     print("Processing time: 0.045 seconds\n")
 
 
-def data_stream():
+def data_stream() -> iter:
     for i in range(1000):
         yield i
 
 
-def game_events():
+def game_events() -> iter:
     for i in range(1000):
         yield i
 
 
-def fibonacci(n):
+def fibonacci(n: int) -> iter:
     a = 0
     b = 1
     for _ in range(n):
@@ -47,7 +47,7 @@ def fibonacci(n):
         a, b = b, a + b
 
 
-def generator_demo():
+def generator_demo() -> None:
     fibo_times = 10
     prime_times = 5
     fibo = fibonacci(fibo_times)
@@ -72,7 +72,7 @@ def generator_demo():
         j += 1
 
 
-def prime(n):
+def prime(n: int) -> iter:
     count = 0
     num = 2
     while count < n:
@@ -86,7 +86,7 @@ def prime(n):
         num += 1
 
 
-def main_func():
+def main_func() -> None:
     print("=== Game Data Stream Processor ===\n")
     game_data()
     stream_analytics()

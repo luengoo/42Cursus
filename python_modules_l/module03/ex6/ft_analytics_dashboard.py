@@ -1,4 +1,4 @@
-def pixel_metrics_3000():
+def pixel_metrics_3000() -> None:
     players = {
         "alice": {"score": 2300, "region": "north",
                   "rev": 12400, "premium": True, "cluster": "hardcore"},
@@ -15,7 +15,8 @@ def pixel_metrics_3000():
     advanced_insights(players)
 
 
-def player_performance(players):
+def player_performance(
+        players: dict[str, dict[str, int | str | bool]]) -> None:
     high_scorers = {
         name: data["score"]
         for name, data in players.items()
@@ -42,12 +43,12 @@ def player_performance(players):
     print(f"Active regions: {regions}")
 
 
-def rev_analytics(players):
+def rev_analytics(players: dict[str, dict[str, int | str | bool]]) -> None:
     print("\n=== Revenue Analytics ===")
     regions = {data["region"] for data in players.values()}
     regions_rev = {
         reg: sum(
-            data["rev"] for data in players.values() if data["reg"] == reg
+            data["rev"] for data in players.values() if data["region"] == reg
         )
         for reg in regions
     }
@@ -68,7 +69,8 @@ def rev_analytics(players):
     print("Conversion rate: 23.5%")
 
 
-def engagement_metrics(players):
+def engagement_metrics(
+        players: dict[str, dict[str, int | str | bool]]) -> None:
     print("\n=== Engagement Metrics ===")
     daily_users = [1250, 1340, 1180, 1420, 1380]
     session_lengths = [12, 45, 30, 180, 20, 25]
@@ -83,7 +85,7 @@ def engagement_metrics(players):
     # retention_rate = (usuarios_retenidos / usuarios_totales) * 100
 
 
-def advanced_insights(player):
+def advanced_insights(players: dict[str, dict[str, int | str | bool]]) -> None:
     print("\n=== Advanced Insights ===")
     players_at_risk = 12
     recommendations_gen = 89
@@ -109,7 +111,7 @@ def advanced_insights(player):
     print(f"Recommendation engine: {recommendations_gen} matches generated")
 
 
-def main_func():
+def main_func() -> None:
     print("=== Game Analytics Dashboard ===")
     pixel_metrics_3000()
 

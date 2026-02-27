@@ -1,23 +1,32 @@
-def check_temperature(temp_str):
-	print("Testing temperature:", temp_str)
-	try:
-		temp_int = int(temp_str)
-		if temp_int > 40:
-			print(f"Error: {temp_int}° is too hot for plants (max 40°C)")
-		elif temp_int < 0:
-			print(f"Error: {temp_int}° is too cold for the plants (min 0°C)")
-		else:
-			print(f"Temperature {temp_int}° is perfect for the plants!")
-	except:
-				print(f"Error: '{temp_str}' is not a valid number")
-		
-def main():
-	print("Write a temperature!\n (Write 'esc' or 'end' to end the program.)")
-	tmp_input = input()
-	if tmp_input == "end" or tmp_input == "esc":
-		print("All test completed - program didn't crash!")
-	else:
-		check_temperature(tmp_input)
-		main()
+def check_temperature(temp_str: str) -> None:
+    print("Testing temperature:", temp_str)
+    try:
+        temp_int = int(temp_str)
+        if temp_int > 40:
+            print(f"Error: {temp_int}°C is too hot for plants (max 40°C)")
+        elif temp_int < 0:
+            print(f"Error: {temp_int}°C is too cold for the plants (min 0°C)")
+        else:
+            print(f"Temperature {temp_int}°C is perfect for the plants!")
+    except Exception:
+        print(f"Error: '{temp_str}' is not a valid number")
 
-main()
+
+def main() -> None:
+    print("=== Garden Temperature Checker ===\n")
+    tmp_input1 = 25
+    tmp_input2 = "abc"
+    tmp_input3 = 100
+    tmp_input4 = -50
+    check_temperature(tmp_input1)
+    print()
+    check_temperature(tmp_input2)
+    print()
+    check_temperature(tmp_input3)
+    print()
+    check_temperature(tmp_input4)
+    print("\nAll tests completed - program didn't crash!")
+
+
+if __name__ == "__main__":
+    main()

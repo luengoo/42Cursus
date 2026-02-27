@@ -1,4 +1,4 @@
-def player_inv(player, player_inv):
+def player_inv(player: str, player_inv: dict) -> None:
 
     print(f"=== {player}'s Inventory ===")
     total_gold = 0
@@ -15,7 +15,7 @@ def player_inv(player, player_inv):
     inv_categories(player_inv)
 
 
-def inv_categories(inventory):
+def inv_categories(inventory) -> None:
     categories = dict()
     for item, info in inventory.items():
         types = info.get("type")
@@ -34,7 +34,8 @@ def inv_categories(inventory):
     print(f"Categories: {category_str}")
 
 
-def transaction_time(inv1, inv2, inv_name1, inv_name2, item, quantity):
+def transaction_time(inv1: dict, inv2: dict, inv_name1: str,
+                     inv_name2: str, item: str, quantity: int) -> None:
     print(f"\n=== Transaction: {inv_name1} ", end="")
     print(f"gives {inv_name2} {quantity} {item}s ===")
     if item in inv1.keys() and inv1.get(item).get("quantity") >= quantity:
@@ -56,7 +57,7 @@ def transaction_time(inv1, inv2, inv_name1, inv_name2, item, quantity):
         print("Not enough in source inventory.")
 
 
-def inv_analytics(inv1, inv2):
+def inv_analytics(inv1: dict, inv2: dict) -> None:
     total_gold = 0
     total_items = 0
     rare_items = []
@@ -85,7 +86,7 @@ def inv_analytics(inv1, inv2):
     print()
 
 
-def main_func():
+def main_func() -> None:
     print("=== Player Inventory System ===\n")
     con = "consumable"
     alice_inv = dict()

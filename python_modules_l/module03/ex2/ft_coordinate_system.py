@@ -1,20 +1,20 @@
 import math
 
 
-def create_position(x, y, z):
+def create_position(x: int, y: int, z: int) -> tuple[int, int, int]:
     position = (x, y, z)
     print(f"Position created: {position}")
     return position
 
 
-def distance_between(p1, p2):
+def distance_between(p1: tuple, p2: tuple) -> float:
     x1, y1, z1 = p1
     x2, y2, z2 = p2
     distance = math.sqrt((x2 - x1)**2 + (y2 - y1)**2 + (z2 - z1)**2)
     return distance
 
 
-def parse_coordinates(coord_str):
+def parse_coordinates(coord_str: str) -> tuple[int, int, int]:
     try:
         parsed = tuple(int(x) for x in coord_str.split(","))
         print(f"Parsed position: {parsed}")
@@ -25,14 +25,14 @@ def parse_coordinates(coord_str):
         return None
 
 
-def unpacking_demo(position):
+def unpacking_demo(position: tuple[int, int, int]) -> None:
     x, y, z = position
     print("\nUnpacking demonstration:")
     print(f"Player at x={x}, y={y}, z={z}")
     print(f"Coordinates: X={x}, Y={y}, Z={z}")
 
 
-def main_program():
+def main_program() -> None:
     print("=== Game Coordinate System ===\n")
     origin = (0, 0, 0)
     pos1 = create_position(10, 20, 5)

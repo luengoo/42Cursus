@@ -1,7 +1,7 @@
 import sys
 
 
-def score_analytics():
+def score_analytics() -> None:
     message: str = "No scores provided. Usage: python3 ft_score_analytics.py"
     print("=== Player Score Analytics ===")
     try:
