@@ -1,4 +1,4 @@
-def player_inv(player: str, player_inv: dict) -> None:
+def player_inv(player: str, player_inv: dict[str, dict]) -> None:
 
     print(f"=== {player}'s Inventory ===")
     total_gold = 0
@@ -15,7 +15,7 @@ def player_inv(player: str, player_inv: dict) -> None:
     inv_categories(player_inv)
 
 
-def inv_categories(inventory) -> None:
+def inv_categories(inventory: dict) -> None:
     categories = dict()
     for item, info in inventory.items():
         types = info.get("type")
@@ -24,13 +24,7 @@ def inv_categories(inventory) -> None:
             categories[types] += quantity
         else:
             categories.update({types: quantity})
-    category_str = ""
-    count = 0
-    for types in categories.keys():
-        category_str += f"{types}({categories.get(types)})"
-        count += 1
-        if count < len(categories):
-            category_str += ", "
+    category_str = ", ".join(f"{t}({categories[t]})" for t in categories)
     print(f"Categories: {category_str}")
 
 
@@ -102,8 +96,8 @@ def main_func() -> None:
     player_inv("Alice", alice_inv)
     transaction_time(alice_inv, bob_inv, "Alice", "Bob", "potion", 2)
     print("=== Updated Inventories ===")
-    print(f"Alice potions: {alice_inv["potion"].get("quantity")}")
-    print(f"Bob potions: {bob_inv["potion"].get("quantity")}")
+    print(f"Alice potions: {alice_inv['potion'].get('quantity')}")
+    print(f"Bob potions: {bob_inv['potion'].get('quantity')}")
     inv_analytics(alice_inv, bob_inv)
 
 

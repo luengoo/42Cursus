@@ -2,11 +2,12 @@ import sys
 
 
 def score_analytics() -> None:
-    message: str = "No scores provided. Usage: python3 ft_score_analytics.py"
     print("=== Player Score Analytics ===")
     try:
         if len(sys.argv) == 1:
-            raise ValueError(message, " <score1> <score2> ...")
+            raise ValueError(
+                "No scores provided. Usage: python3 ft_score_analytics.py "
+                "<score1> <score2> ...")
 
         scores = []
 
