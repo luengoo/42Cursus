@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 from typing import List
 
 
@@ -27,9 +28,36 @@ def test_watering_system() -> None:
 
     print("Testing with error...")
     plant_list2: List[str] = ["tomato", "None"]
+=======
+def water_plants(plant_list: list[str]) -> None:
+    valid_plants = ["tomato", "lettuce", "carrots"]
+    print("Opening watering system")
+    try:
+        for plant in plant_list:
+            if plant in valid_plants:
+                print(f"Watering {plant}")
+            else:
+                print(f"Error: Cannot water {plant} - invalid plant!")
+    finally:
+        print("Closing watering system (cleanup)")
+
+
+def test_watering_system() -> None:
+    plant_list = ["tomato", "lettuce", "carrots"]
+    print("=== Garden Watering System ===\n")
+    print("Testing normal watering...")
+    water_plants(plant_list)
+    print("Watering completed successfully!\n")
+    print("Testing with error...")
+    plant_list2 = ["tomato", "None"]
+>>>>>>> 375dd648f5bc6fe412cd5bfc4a57527bdd288671
     water_plants(plant_list2)
     print("\nCleanup always happens, even with errors!")
 
 
 if __name__ == "__main__":
+<<<<<<< HEAD
     test_watering_system()
+=======
+    test_watering_system()
+>>>>>>> 375dd648f5bc6fe412cd5bfc4a57527bdd288671

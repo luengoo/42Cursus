@@ -1,8 +1,3 @@
-def main_func():
-    print("=== Game Analytics Dashboard ===\n")
-    analytics_dashboard()
-
-
 def analytics_dashboard():
     players = {
         "alice": {
@@ -91,5 +86,5 @@ def analytics_dashboard():
     name, data = top_player
     print(f"Top performer: {name} ({data['score']} points, {len(data['achievements'])} achievements)")
 
-
-main_func()
+if __name__ == "__main__":
+    analytics_dashboard()
