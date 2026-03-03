@@ -1,7 +1,7 @@
 import sys
 
 
-def stream_management():
+def stream_management() -> None:
     sys.stdout.write("=== CYBER ARCHIVES - COMMUNICATION SYSTEM ===\n\n")
     sys.stdout.write("Input Stream active. Enter archivist ID: ")
     # archivist_id = sys.stdin.readline().strip()

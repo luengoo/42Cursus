@@ -1,4 +1,4 @@
-def vault_security():
+def vault_security() -> None:
     print("=== CYBER ARCHIVES - VAULT SECURITY SYSTEM ===\n")
     print("Initiating secure vault access...")
     print("Vault connection established with failsafe protocols\n")

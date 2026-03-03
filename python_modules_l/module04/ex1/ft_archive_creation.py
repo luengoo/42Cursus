@@ -1,4 +1,4 @@
-def archive_creation():
+def archive_creation() -> None:
     print("=== CYBER ARCHIVES - PRESERVATION SYSTEM ===\n")
     new_txt = "new_discovery.txt"
     print(f"Initializing new storage unit: {new_txt}")

@@ -1,4 +1,4 @@
-def storage_access():
+def storage_access() -> None:
     print("=== CYBER ARCHIVES - DATA RECOVERY SYSTEM ===\n")
     file_name = "ancient_fragment.txt"
     print(f"Accessing Storage Vault: {file_name}")
