@@ -1,107 +1,95 @@
-def	pixel_metrics_3000():
-	players = {
-		"alice": {"score": 2300, "region": "north", "revenue": 12400, "premium": True, "cluster": "hardcore"},
-		"charlie": {"score": 2150, "region": "east", "revenue": 12890, "premium": True, "cluster": "competitive"},
-		"diana": {"score": 2050, "region": "central", "revenue": 18750, "premium": False, "cluster": "casual"},
-		"frank": {"score": 200, "region": "north", "revenue": 3020, "premium": False, "cluster": "casual"}
-	}
-	player_performance(players)
-	revenue_analytics(players)
-	engagement_metrics(players)
-	advanced_insights(players)
+def main_func():
+    print("=== Game Analytics Dashboard ===\n")
+    analytics_dashboard()
 
-def player_performance(players):
-	high_scorers = {
-		name: data["score"]
-		for name, data in players.items()
-		if data["score"] >= 2000
-	}
-	top_performers = sorted(
-		[name for name, data in players.items() if data["score"] >= 2000]
-	)
-	regions = set(
-		data["region"]
-		for data in players.values()
-	)
-	print("\n=== Player Performance Report ===")
-	print(f"Top performers: {top_performers}")
-	print("High scorers (2000+): {", end="")
-	items = list(high_scorers.items())
-	for i in range(len(items)):
-		name, score = items[i]
-		if i == len(items) - 1:
-			print(f"{name}: {score}", end="")
-		else:
-			print(f"{name}: {score}, ", end="")
-	print("}")
-	print(f"Active regions: {regions}")
 
-def revenue_analytics(players):
-	print("\n=== Revenue Analytics ===")
-	regions = {data["region"] for data in players.values()}
-	regions_revenue = {
-		region: sum(
-			data["revenue"] for data in players.values() if data["region"] == region
-		)
-		for region in regions
-	}
-	print("Revenue by region: {", end="")
-	items = list(regions_revenue.items())
-	for i in range(len(items)):
-		region, rev = items[i]
-		if i == len(items) - 1:
-			print(f"{region}: {rev}", end="")
-		else:
-			print(f"{region}: {rev}, ", end="")
-	print("}")
-	print("Premium players: 45")
-	# premium_count = sum(1 for data in players.values() if data["premium"])
-	# total_players = len(players)
-	# conversion_rate = (premium_count / total_players) * 100
-	# print(f"Conversion rate: {conversion_rate}%")
-	print("Conversion rate: 23.5%")
+def analytics_dashboard():
+    players = {
+        "alice": {
+            "score": 2300,
+            "region": "north",
+            "achievements": ["first_kill", "level_10", "boss_slayer", "explorer", "veteran"],
+            "active": True
+        },
+        "bob": {
+            "score": 1800,
+            "region": "central",
+            "achievements": ["first_kill", "level_10", "explorer"],
+            "active": True
+        },
+        "charlie": {
+            "score": 2150,
+            "region": "east",
+            "achievements": ["first_kill", "boss_slayer", "veteran", "explorer", "level_10", "arena_master", "collector"],
+            "active": True
+        },
+        "diana": {
+            "score": 2050,
+            "region": "north",
+            "achievements": [],
+            "active": False
+        }
+    }
 
-def engagement_metrics(players):
-	print("\n=== Engagement Metrics ===")
-	daily_users = [1250, 1340, 1180, 1420, 1380]
-	session_lengths = [12, 45, 30, 180, 20, 25]
-	retention_rate = 78.2
-	avg_session_length = 24.5
-	# avg_session_length = sum(session_lengths) / (len(session_lengths))
-	max_session_length = max(session_lengths)
-	print(f"Daily active users: {daily_users}")
-	print(f"Session lengths: avg {avg_session_length:.1f} min, max {max_session_length} min")
-	print(f"Retention rate: {retention_rate}%")
-	# retention_rate = (usuarios_retenidos / usuarios_totales) * 100
+    print("=== List Comprehension Examples ===")
 
-def advanced_insights(player):
-	print("\n=== Advanced Insights ===")
-	players_at_risk = 12
-	recommendations_gen = 89
-	clusters = {
-		"casual": {"players": 234},
-		"hardcore": {"players": 89},
-		"competitive": {"players": 156}
-	}
-	
-	print("Player clusters: {", end="")
-	player_clusters = {
-			name: data["players"]
-			for name, data in clusters.items()
-		}
-	items = list(player_clusters.items())
-	for i in range(len(items)):
-		name, count = items[i]
-		if i == len(items) - 1:
-			print(f"{name}: {count}", end="")
-		else:
-			print(f"{name}: {count}, ", end="")
-	print("}")
-	print(f"Churn prediction: {players_at_risk} players at risk")
-	print(f"Recommendation engine: {recommendations_gen} matches generated")
+    high_scorers = [name for name, data in players.items() if data["score"] > 2000]
+    print(f"High scorers (>2000): {high_scorers}")
 
-def	main_func():
-	print("=== Game Analytics Dashboard ===")
-	pixel_metrics_3000()
+    doubled_scores = [data["score"] * 2 for data in players.values()]
+    print(f"Scores doubled: {doubled_scores}")
+
+    active_players = [name for name, data in players.items() if data["active"]]
+    print(f"Active players: {active_players}")
+
+    print("\n=== Dict Comprehension Examples ===")
+
+    player_scores = {name: data["score"] for name, data in players.items() if name != "diana"}
+    print(f"Player scores: {player_scores}")
+
+    score_categories = {
+        "high": sum(1 for p in players.values() if p["score"] >= 2000),
+        "medium": sum(1 for p in players.values() if 1500 <= p["score"] < 2000),
+        "low": sum(1 for p in players.values() if p["score"] < 1500),
+    }
+    print(f"Score categories: {score_categories}")
+
+    achievement_counts = {
+        name: len(data["achievements"])
+        for name, data in players.items()
+        if name != "diana"
+    }
+    print(f"Achievement counts: {achievement_counts}")
+
+    print("\n=== Set Comprehension Examples ===")
+
+    unique_players = {name for name in players.keys()}
+    print(f"Unique players: {unique_players}")
+
+    unique_achievements = {
+        achievement
+        for data in players.values()
+        for achievement in data["achievements"]
+    }
+    print(f"Unique achievements: {unique_achievements}")
+
+    active_regions = {data["region"] for data in players.values()}
+    print(f"Active regions: {active_regions}")
+
+    print("\n=== Combined Analysis ===")
+
+    total_players = len(players)
+    print(f"Total players: {total_players}")
+
+    total_unique_achievements = len(unique_achievements)
+    print(f"Total unique achievements: {total_unique_achievements}")
+
+    average_score = sum(p["score"] for p in players.values()) / total_players
+    print(f"Average score: {average_score}")
+
+    top_player = max(players.items(), key=lambda x: x[1]["score"])
+    name, data = top_player
+    print(f"Top performer: {name} ({data['score']} points, {len(data['achievements'])} achievements)")
+
 
 main_func()
