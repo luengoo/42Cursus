@@ -13,7 +13,7 @@ def player_input() -> None:
                 print(f"Invalid format: {arg}")
                 continue
             key, value = arg.split(":", 1)
-            
+
             try:
                 inventory[key] = int(value)
             except ValueError:
@@ -23,7 +23,8 @@ def player_input() -> None:
     print(f"Unique item types: {len(inventory)}\n")
     print("=== Current Inventory ===")
     for item, quantity in sorted(
-        inventory.items(), key=lambda x: x[1], reverse=True):
+        inventory.items(), key=lambda x: x[1], reverse=True
+    ):
         percent = (quantity / total_items) * 100
         print(f"{item}: {quantity} units ({percent:.1f}%)")
 
@@ -31,7 +32,9 @@ def player_input() -> None:
     most_abundant = max(inventory, key=inventory.get)
     least_abundant = min(inventory, key=inventory.get)
     print(f"Most abundant: {most_abundant} ({inventory[most_abundant]} units)")
-    print(f"Least abundant: {least_abundant} ({inventory[least_abundant]} units)")
+    print(
+        f"Least abundant: {least_abundant} ({inventory[least_abundant]} units)"
+    )
 
     print("\n=== Item Categories ===")
     moderate = {}
@@ -52,7 +55,7 @@ def player_input() -> None:
             restock.append(item)
         else:
             continue
-    print(f"Restock needed: ", end="")
+    print("Restock needed: ", end="")
     i = 0
     for item in restock:
         if i == len(restock) - 1:
@@ -66,7 +69,7 @@ def player_input() -> None:
     for item, quantity in inventory.items():
         d_keys.append(item)
         d_values.append(quantity)
-    print(f"Dictionaty keys: ", end="")
+    print("Dictionaty keys: ", end="")
     i = 0
     for item in d_keys:
         if i == len(d_keys) - 1:
@@ -74,7 +77,7 @@ def player_input() -> None:
         else:
             print(f"{item}, ", end="")
             i += 1
-    print(f"Dictionary values: ", end="")
+    print("Dictionary values: ", end="")
     i = 0
     for item in d_values:
         if i == len(d_values) - 1:
@@ -82,11 +85,12 @@ def player_input() -> None:
         else:
             print(f"{item}, ", end="")
             i += 1
-    print(f"Sample lookup - 'sword' in inventory: ", end="")
+    print("Sample lookup - 'sword' in inventory: ", end="")
     if "sword" in inventory:
         print("True")
     else:
         print("False")
+
 
 if __name__ == "__main__":
     player_input()

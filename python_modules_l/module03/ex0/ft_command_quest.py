@@ -8,7 +8,7 @@ def handle_argv() -> None:
         print("No arguments provided!")
     print(f"Program name: {sys.argv[0]}")
     if len(sys.argv) > 1:
-        print(f"Arguments recieved: {len(sys.argv)}")
+        print(f"Arguments recieved: {len(sys.argv) - 1}")
         while i < len(sys.argv):
             print(f"Argument {i}: {sys.argv[i]}")
             i += 1
