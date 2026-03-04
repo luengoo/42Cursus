@@ -25,13 +25,24 @@ class DataStream(ABC):
     def process_batch(self) -> List[Any]:
         batch: List[Any] = self.read_batch()
         print(f"Stream ID: {self.stream_id}, Type: {self.get_type()}")
-        print(f"Analysis: {self.analyze_batch(batch)}")
+        if isinstance(self, SensorStream):
+            formatted = ", ".join([f"{k}:{v}" for k, v in batch])
+            print(f"Processing sensor batch: [{formatted}]")
+            print(f"Sensor analysis: {self.analyze_batch(batch)}")
+        elif isinstance(self, TransactionStream):
+            formatted = ", ".join([f"{k}:{v}" for k, v in batch])
+            print(f"Processing transaction batch: [{formatted}]")
+            print(f"Transaction analysis: {self.analyze_batch(batch)}")
+        elif isinstance(self, EventStream):
+            formatted = ", ".join(batch)
+            print(f"Processing event batch: [{formatted}]")
+            print(f"Event analysis: {self.analyze_batch(batch)}")
         return batch
 
 
 class SensorStream(DataStream):
     def get_type(self) -> str:
-        return "Enviromental Data"
+        return "Environmental Data"
 
     def read_batch(self) -> List[Tuple[str, float]]:
         return [("temp", 22.5), ("humidity", 65), ("pressure", 1013)]
@@ -50,7 +61,7 @@ class TransactionStream(DataStream):
         return "Financial Data"
 
     def read_batch(self) -> List[Tuple[str, int]]:
-        return [("buy", 100), ("sell", 150), ("buy", 75)]
+        return [("buy", 100), ("sell", 150), ("buy", 75), ("sell", 0)]
 
     def analyze_batch(self, batch: List[Tuple[str, int]]) -> str:
         net: int = 0
@@ -59,7 +70,8 @@ class TransactionStream(DataStream):
                 net += amount
             if action == "sell":
                 net -= amount
-        return f"{len(batch)} operations, net flow: +{net} units"
+        sign = "+" if net >= 0 else ""
+        return f"{len(batch)} operations, net flow: {sign}{net} units"
 
     def filter_batch(
         self, batch: List[Tuple[str, int]]
@@ -108,8 +120,8 @@ def main_test() -> None:
     print("\nBatch 1 Results:")
     print("- Sensor data: ", end="")
     print(f"{len(sensor.filter_batch(sensor_batch))} readings processed")
-    print("- Transaction data: ")
-    print(f"{len(transaction.filter_batch(tx_batch))} operations processed")
+    print("- Transaction data: ", end="")
+    print(f"{len((tx_batch))} operations processed")
     print(f"- Event data: {len(event_batch)} events processed")
     print("\nStream filtering active: High-priority data only")
     filtered_sensors = sensor.filter_batch(sensor_batch)
