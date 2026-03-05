@@ -1,4 +1,5 @@
 def analytics_dashboard():
+    print("=== Game Analytics Dashboard ===\n")
     players = {
         "alice": {
             "score": 2300,
