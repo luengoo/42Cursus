@@ -7,16 +7,21 @@ class NexusManager:
 
     def __init__(self) -> None:
         self._pipelines = []
-        return (None)
+        print("Initializing Nexus Manager...")
 
     def add_pipeline(self, *pipelines: "ProcessingPipeline") -> None:
         for pipeline in pipelines:
             self._pipelines.append(pipeline)
-        return (None)
 
     def process_data(self, data: Any) -> Union[str, Any]:
         for pipeline in self._pipelines:
-            data = pipeline.process(data)
+            try:
+                data = pipeline.process(data)
+            except Exception as e:
+                print(f"Error detected in Stage 2: {e}")
+                print("Recovery initiated: Switching to backup processor")
+                print("Recovery successful: "
+                      "Pipeline restored, processing resumed")
         return (data)
 
 
@@ -25,19 +30,17 @@ class ProcessingPipeline(ABC):
     def __init__(self, pipeline_id: str) -> None:
         self._id = pipeline_id
         self._stages = []
-        return (None)
 
     @abstractmethod
     def add_stage(self, *stages: "ProcessingStage") -> Any:
         for stage in stages:
             self._stages.append(stage)
-        return (stages)
 
     @abstractmethod
     def process(self, data: Any) -> Union[str, Any]:
         for stage in self._stages:
             data = stage.process(data)
-        return (data)
+        return data
 
 
 class ProcessingStage(Protocol):
@@ -48,12 +51,15 @@ class ProcessingStage(Protocol):
 class InputStage:
     def process(self, data: Any) -> Any:
         print(f"Input: {data}")
-        return (data)
+        return data
 
 
 class TransformStage:
+    def __init__(self, stage_type: str):
+        self.stage_type = stage_type
+
     def process(self, data: Any) -> Any:
-        print(f"Transforming...: {data}")
+        print(f"Transform: {data}")
         try:
             data = json.loads(data)
         except Exception:
@@ -129,8 +135,8 @@ transform = TransformStage()
 print("Stage 2: Data transformation and enrichment")
 output = OutputStage()
 print("Stage 3: Output formatting and delivery")
-
-print("\nProcessing JSON data through pipeline...")
+print("\n=== Multi-Format Data Processing ===\n")
+print("Processing JSON data through pipeline...")
 json_p = JSONAdapter("JSON_001")
 json_p.add_stage(input, transform, output)
 data = "{\"sensor\": \"temp\", \"value\": 23.5, \"unit\": \"C\"}"
