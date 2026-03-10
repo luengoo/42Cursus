@@ -4,14 +4,8 @@ import json
 
 
 class NexusManager:
-    """The Nexus manager manages multiple pipelines
-    """
-    def __init__(self) -> None:
-        """Initialize the nexus manager
 
-        Returns:
-            None
-        """
+    def __init__(self) -> None:
         self._pipelines = []
         return (None)
 
@@ -27,7 +21,6 @@ class NexusManager:
 
 
 class ProcessingPipeline(ABC):
-
     @abstractmethod
     def __init__(self, pipeline_id: str) -> None:
         self._id = pipeline_id
@@ -86,7 +79,6 @@ class JSONAdapter(ProcessingPipeline):
         return (None)
 
     def process(self, data: Any) -> Union[str, Any]:
-        """Processes the data"""
         for stage in self._stages:
             data = stage.process(data)
         return (data)
