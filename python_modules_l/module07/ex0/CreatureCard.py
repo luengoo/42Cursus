@@ -1,15 +1,15 @@
 from .Card import Card
 
+
 class CreatureCard(Card):
-    def __init__(self, name: str, cost: int, 
-                rarity: str, attack: int, health: int):
+    def __init__(self, name: str, cost: int,
+                 rarity: str, attack: int, health: int):
         super().__init__(name, cost, rarity)
         try:
             if attack >= 0:
                 self.attack = attack
             else:
                 raise ValueError("Attack cannot be negative")
-            
             if health > 0:
                 self.health = health
             else:
