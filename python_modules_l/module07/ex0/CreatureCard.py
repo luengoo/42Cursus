@@ -33,7 +33,7 @@ class CreatureCard(Card):
             "mana_used": self.cost,
             "effect": "Creature summoned to battlefield"
         }
-        return game_state
+        return game_state[self.name]
 
     def attack_target(self, target) -> dict:
         return {

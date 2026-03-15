@@ -1,4 +1,4 @@
-from .CreatureCard import CreatureCard
+from CreatureCard import CreatureCard
 
 print("\n=== DataDeck Card Foundation ===\n")
 print("Testing Abstract Base Class Design:\n")

@@ -1,11 +1,13 @@
 from ex0.Card import Card
 from ex0.CreatureCard import CreatureCard
-from ArtifactCard import ArtifactCard
-from SpellCard import SpellCard
+from .ArtifactCard import ArtifactCard
+from .SpellCard import SpellCard
 import random
+
 
 class Deck:
     deck = []
+
     def add_card(self, card: Card) -> None:
         self.deck.append(card)
 
@@ -18,21 +20,20 @@ class Deck:
             print(f"Couldn't find {card_name} in deck...")
             return False
 
-
     def shuffle(self) -> None:
         random.shuffle(self.deck)
 
     def draw_card(self) -> Card:
-        return self.deck[0]
-    
+        print(f"Drew: {self.deck[0]}")
+
     def get_deck_stats(self) -> dict:
         avg = sum(card.cost for card in self.deck) / len(self.deck)
         result = {
-            "total_cards" : 0,
-            "creatures" : 0,
-            "artifacts" : 0,
-            "spells" : 0,
-            "avg.cost" : avg
+            "total_cards": 0,
+            "creatures": 0,
+            "artifacts": 0,
+            "spells": 0,
+            "avg.cost": avg
             }
 
         for card in self.deck:
@@ -43,7 +44,5 @@ class Deck:
             elif isinstance(card, SpellCard):
                 result["spells"] += 1
             result["total_cards"] += 1
-        
-        return result
 
-    
+        return result

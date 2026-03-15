@@ -1,9 +1,11 @@
 from abc import ABC, abstractmethod
 
+
 class Card(ABC):
     RARITIES = ["common", "rare", "legendary"]
     game_state = {}
-    def __init__(self, name:str, cost: int, rarity: str):
+
+    def __init__(self, name: str, cost: int, rarity: str):
         try:
             if name != "":
                 self.name = name
@@ -19,7 +21,7 @@ class Card(ABC):
                 raise ValueError("Invalid rarity")
         except ValueError as e:
             print(f"ERROR: {e}. Card was not created.")
-    
+
     @abstractmethod
     def play(self, game_state: dict):
         pass

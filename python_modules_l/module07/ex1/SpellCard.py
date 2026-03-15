@@ -1,7 +1,9 @@
 from ex0.Card import Card
 
+
 class SpellCard(Card):
     VALID_EFFECTS = ["damage", "heal", "buff", "debuff"]
+
     def __init__(self, name: str, cost: int, rarity: str, effect_type: str):
         super().__init__(name, cost, rarity)
         if effect_type in self.VALID_EFFECTS:
@@ -9,7 +11,7 @@ class SpellCard(Card):
         else:
             raise ValueError("Not a valid effect.")
         if self.effect_type == "damage":
-                self.effect = "Deal 3 damage to target"
+            self.effect = "Deal 3 damage to target"
         elif self.effect_type == "heal":
             self.effect = "Heal 3 life points to target"
         elif self.effect_type == "buff":
