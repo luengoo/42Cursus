@@ -6,25 +6,29 @@ import random
 
 
 class Deck:
-    deck = []
+
+    def __init__(self):
+        self.deck = []
 
     def add_card(self, card: Card) -> None:
         self.deck.append(card)
 
     def remove_card(self, card_name: str) -> bool:
-        if card_name in self.deck:
-            self.deck.remove(card_name)
-            print(f"{card_name} removed from the deck")
-            return True
-        else:
-            print(f"Couldn't find {card_name} in deck...")
-            return False
+        for card in self.deck:
+            if card.name == card_name:
+                self.deck.remove(card)
+                print(f"{card_name} removed from the deck")
+                return True
+        print(f"Couldn't find {card_name} in deck...")
+        return False
 
     def shuffle(self) -> None:
         random.shuffle(self.deck)
 
     def draw_card(self) -> Card:
-        print(f"Drew: {self.deck[0]}")
+        card = self.deck.pop(0)
+        print(f"Drew: {card.name} ({card.type})")
+        return card
 
     def get_deck_stats(self) -> dict:
         avg = sum(card.cost for card in self.deck) / len(self.deck)

@@ -11,9 +11,18 @@ crystal = ArtifactCard(
     "Mana Crystal", 2, "common", 8, "Permanent: +1 mana per turn")
 dragon = CreatureCard("Fire Dragon", 5, "Legendary", 5, 7)
 
-Deck.add_card(bolt)
-Deck.add_card(crystal)
-Deck.add_card(dragon)
-print(f"Deck stats: {Deck.get_deck_stats()}\n")
+deck = Deck()
+game_state = {}
+
+deck.add_card(bolt)
+deck.add_card(crystal)
+deck.add_card(dragon)
+print(f"Deck stats: {deck.get_deck_stats()}\n")
 print("Drawing and playing cards:\n")
-print(f"{Deck.draw_card()}")
+deck.draw_card()
+print(f"Play result: {bolt.play(game_state)}\n")
+deck.draw_card()
+print(f"Play result: {crystal.play(game_state)}\n")
+deck.draw_card()
+print(f"Play result: {dragon.play(game_state)}\n")
+print("Polymorphism in action: Same interface, different card behaviors!")

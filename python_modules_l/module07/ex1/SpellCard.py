@@ -18,6 +18,7 @@ class SpellCard(Card):
             self.effect = "Buffed target's strenght"
         else:
             self.effect = "Debuffed target's strenght"
+        self.type = "Spell"
 
     def play(self, game_state: dict) -> dict:
         game_state[self.name] = {
@@ -25,7 +26,7 @@ class SpellCard(Card):
             "mana_used": self.cost,
             "effect": self.effect
         }
-        return game_state
+        return game_state[self.name]
 
     def resolve_effect(self, targets: list) -> dict:
         results = {}

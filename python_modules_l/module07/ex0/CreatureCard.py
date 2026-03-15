@@ -16,6 +16,7 @@ class CreatureCard(Card):
                 raise ValueError("Health must be greater than 0")
         except ValueError as e:
             print(f"ERROR. {e}")
+        self.type = "Creature"
 
     def get_card_info(self):
         return {
