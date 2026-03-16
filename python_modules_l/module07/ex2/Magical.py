@@ -24,7 +24,8 @@ class Magical(ABC):
     @abstractmethod
     def get_magic_stats(self) -> dict:
         result = {
-            'Spell Cast': self.cast_spell,
-            'Mana channel': self.channel_mana
+            'caster': self.name,
+            'total_mana': self.mana,
+            'spell_damage': self.damage
         }
         return result

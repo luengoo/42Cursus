@@ -15,18 +15,24 @@ class Combatable(ABC):
 
     @abstractmethod
     def deffend(self, incoming_damage: int) -> dict:
+        if self.health - self.damage > 0:
+            still_alive = True
+        else:
+            still_alive = False
         result = {
-            'deffender': self.name,
-            'damage_taken': (incoming_damage - self.damage_blocked),
-            'damage_blocked': self.damage_blocked,
-            'still_alive': self.alive
+            'defender': self.name,
+            'damage_taken': (incoming_damage - self.defense),
+            'damage_blocked': self.defense,
+            'still_alive': still_alive
         }
         return result
 
     @abstractmethod
     def get_combat_stats(self) -> dict:
         stats = {
-            "Attack result": self.attack,
-            "Deffend result": self.deffend
+            'attacker': self.name,
+            'attack': self.damage,
+            'deffense': self.defense,
+            'health': self.health
         }
         return stats
