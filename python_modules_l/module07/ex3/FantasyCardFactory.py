@@ -7,6 +7,7 @@ from ex1.ArtifactCard import ArtifactCard
 
 class FantasyCardFactory(CardFactory):
     factory = []
+    hand = []
     aviable_types = {
         'creatures': ['dragon', 'goblin'],
         'spells': ['fireball'],
@@ -39,9 +40,11 @@ class FantasyCardFactory(CardFactory):
             return artifact
         else:
             raise ValueError("Not valid durability: int required!")
-        
+
     def get_supported_types(self) -> None:
         print(f"Aviable types: {self.aviable_types}")
-    
-    def create_themed_deck(self, size: int):
-        
+
+    def create_themed_deck(self, size: int) -> list:
+        for card in self.factory in range(size):
+            self.hand.append(card)
+        return self.hand
