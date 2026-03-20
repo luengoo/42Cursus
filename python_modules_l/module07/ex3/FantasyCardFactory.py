@@ -1,50 +1,53 @@
-from .CardFactory import CardFactory
 from ex0.Card import Card
 from ex0.CreatureCard import CreatureCard
 from ex1.SpellCard import SpellCard
 from ex1.ArtifactCard import ArtifactCard
+from ex3.CardFactory import CardFactory
+from typing import Dict
 
 
 class FantasyCardFactory(CardFactory):
-    factory = []
-    hand = []
-    aviable_types = {
-        'creatures': ['dragon', 'goblin'],
-        'spells': ['fireball'],
-        'artifacts': ['mana_ring']
-    }
-
-    def __init__(self):
-        super().__init__(self)
 
     def create_creature(self, name_or_power: str | int | None = None) -> Card:
-        creature = CreatureCard(self.name, self.cost, self.rarity,
-                                self.attack, self.health)
-        FantasyCardFactory.factory.append(creature)
-        return creature
+        if name_or_power == "Goblin":
+            return (CreatureCard("Goblin Warrior", 2,
+                                 "Legendary", 5, 8))
+        else:
+            return CreatureCard("Fire Dragon", 5,
+                                "Legendary", 12, 12)
 
     def create_spell(self, name_or_power: str | int | None = None) -> Card:
-        if isinstance(name_or_power, str):
-            spell = SpellCard(self.name, self.cost, self.rarity, name_or_power)
-            FantasyCardFactory.factory.append(spell)
-            return spell
-        else:
-            raise ValueError(
-                "Not valid effect name for the spell: str required!")
+        if name_or_power:
+            return SpellCard(name_or_power, 4,
+                             "Rare", "damage")
+        return SpellCard("Lightning bolt", 3,
+                         "Rare", "damage")
 
     def create_artifact(self, name_or_power: str | int | None = None) -> Card:
-        if isinstance(name_or_power, int):
-            artifact = ArtifactCard(self.name, self.cost, self.rarity,
-                                    name_or_power, self.effect)
-            FantasyCardFactory.factory.append(artifact)
-            return artifact
-        else:
-            raise ValueError("Not valid durability: int required!")
+        if name_or_power:
+            return ArtifactCard(name_or_power, 4, "Rare", 999,
+                                "is now on the field")
 
-    def get_supported_types(self) -> None:
-        print(f"Aviable types: {self.aviable_types}")
+        return ArtifactCard("Mana Crystal", 4, "Rare", 999,
+                            "Permanent: +1 mana per turn")
 
-    def create_themed_deck(self, size: int) -> list:
-        for card in self.factory in range(size):
-            self.hand.append(card)
-        return self.hand
+    def create_themed_deck(self, size: int) -> Dict:
+
+        deck = {"creatures": [], "spells": [], "artifacts": []}
+        while size:
+            if size % 2 == 0:
+                deck["creatures"].append(self.create_creature())
+            elif size % 3 == 0:
+                deck["artifacts"].append(self.create_artifact())
+            elif size % 5 == 0:
+                deck["spells"].append(self.create_spell())
+            else:
+                deck["creatures"].append(self.create_creature())
+            size -= 1
+        return deck
+
+    def get_supported_types(self) -> Dict:
+        return {
+            "creatures": ["dragon", "goblin"],
+            "spells": ["fireball"], "artifacts": ["mana_ring"]
+            }
