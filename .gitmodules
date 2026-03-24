@@ -10,3 +10,6 @@
 [submodule "push_swap"]
 	path = push_swap
 	url = git@github.com:luengoo/push_swap.git
+[submodule "python_modules"]
+	path = python_modules
+	url = git@github.com:luengoo/python_modules.git
