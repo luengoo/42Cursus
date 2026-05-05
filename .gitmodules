@@ -13,3 +13,6 @@
 [submodule "python_modules"]
 	path = python_modules
 	url = git@github.com:luengoo/python_modules.git
+[submodule "fly-in"]
+	path = fly-in
+	url = git@github.com:luengoo/fly-in.git
