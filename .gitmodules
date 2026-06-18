@@ -16,3 +16,6 @@
 [submodule "fly-in"]
 	path = fly-in
 	url = git@github.com:luengoo/fly-in.git
+[submodule "codexion"]
+	path = codexion
+	url = git@github.com:luengoo/codexion.git
