@@ -19,3 +19,6 @@
 [submodule "codexion"]
 	path = codexion
 	url = git@github.com:luengoo/codexion.git
+[submodule "CallMeMaybe"]
+	path = CallMeMaybe
+	url = git@github.com:luengoo/CallMeMaybe.git
