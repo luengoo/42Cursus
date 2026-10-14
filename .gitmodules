@@ -22,3 +22,6 @@
 [submodule "CallMeMaybe"]
 	path = CallMeMaybe
 	url = git@github.com:luengoo/CallMeMaybe.git
+[submodule "RAG"]
+	path = RAG
+	url = git@github.com:luengoo/RAG-against-the-machine.git
